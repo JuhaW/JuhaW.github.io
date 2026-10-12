@@ -4,9 +4,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>FreeBASIC Panel — VS Code extension and language server for FreeBASIC</title>
+	<title>FreeBASIC Panel — see what your FreeBASIC project actually contains</title>
 	<meta name="description"
-		content="A VS Code extension and Tree-sitter language server for FreeBASIC: colour groups, project structure, include handling and .bi generation.">
+		content="An editor sidebar for FreeBASIC: a live map of your project, and colour groups that follow your symbols from the sidebar into the code.">
 	<link rel="stylesheet" href="styles.css">
 </head>
 
@@ -16,12 +16,9 @@
 		<div class="wrap">
 			<h1>FreeBASIC Panel</h1>
 			<nav>
-				<a href="#panel">Panel</a>
+				<a href="#sidebar">The sidebar</a>
 				<a href="#groups">Colour groups</a>
 				<a href="#editor">In the editor</a>
-				<a href="#commands">Commands</a>
-				<a href="#settings">Settings</a>
-				<a href="#under">Architecture</a>
 			</nav>
 		</div>
 	</header>
@@ -29,281 +26,143 @@
 	<div class="wrap">
 
 		<div class="hero">
-			<div class="kicker">VS Code extension &middot; language server &middot; FreeBASIC</div>
-			<h2>A structured view of a FreeBASIC project, and colour groups you control from the editor.</h2>
+			<div class="kicker">For Visual Studio Code &middot; FreeBASIC</div>
+			<h2>See what your project actually contains — and colour it the way you think about it.</h2>
 
-			<p>FreeBASIC Panel gives <code>.bas</code> projects a project-wide view of what is
-				actually in them: which functions exist, where they are defined, what calls them,
-				which types have instances, and which <code>#include</code> lines pull in what.</p>
+			<p>FreeBASIC Panel builds a live map of a FreeBASIC project: every function,
+				every type, every variable, and every library your code pulls in. It shows
+				you what is there, what depends on what, and which parts of the project the
+				work is concentrated in.</p>
 
-			<p>On top of that it adds colour <em>groups</em> — you assign a symbol to a named
-				group with a colour, and the symbol takes that colour everywhere it appears:
-				in the code, in hover cards, and in the sidebar. Groups can be inherited,
-				overridden per symbol, or switched off without deleting anything.</p>
-
-			<div class="meta">version 0.0.1 &middot; activates on .bas files &middot; built against FreeBASIC 1.20.0</div>
+			<p>On top of that map you can organise your symbols into colour groups you name
+				yourself. A symbol belongs to a group, the group has a colour, and that colour
+				follows the symbol everywhere it appears — in the editor, in the hover card,
+				and in the sidebar.</p>
 		</div>
 
-		<section>
-			<h2>The panel</h2>
-			<p>The extension lives in the activity bar as a single webview with six tabs.</p>
+		<section id="sidebar">
+			<h2>The sidebar</h2>
+			<p>One panel along the side of the editor, six views into the project.</p>
 
 			<div class="tabs">
 				<div class="tab">
-					<h4><code>Functions</code></h4>
-					<p>Every function, sub and macro in the project, grouped by colour group.
-						Callers and callees per symbol. Scope filter, search, category filter,
-						favourites and drag-and-drop ordering of the groups themselves.</p>
+					<h4>Functions</h4>
+					<p>Everything you can call, gathered under its colour group. See who calls
+						what, jump straight to any definition, and mark the handful of functions you
+						keep coming back to as favourites.</p>
 				</div>
 				<div class="tab">
-					<h4><code>Types</code></h4>
-					<p>User-defined types and enums, expandable into their instances and members.
-						Members are labelled by kind — method, property, field — and instances
-						show their own colour, falling back to the type's colour.</p>
+					<h4>Types</h4>
+					<p>Your own types and enumerations, opened up into the variables of that type
+						and the functions that belong to it.</p>
 				</div>
 				<div class="tab">
-					<h4><code>Groups</code></h4>
-					<p>The colour groups themselves: name, colour, and whether the group is in
-						use. Groups can be renamed, recoloured, disabled, or dragged to a new
-						position in the sidebar.</p>
+					<h4>Groups</h4>
+					<p>Where the colour groups live. Create them, rename them, recolour them,
+						reorder them by dragging, or switch one off without losing it.</p>
 				</div>
 				<div class="tab">
-					<h4><code>Files</code></h4>
-					<p>The project's <code>.bas</code> modules and its <code>#include</code> lines.
-						Include lines can be marked external and assigned to a group so library
-						code is coloured without being edited. Also generates <code>generated.bi</code>.</p>
+					<h4>Files</h4>
+					<p>The modules in your project and the libraries they include. Library files
+						can be given a group of their own, so code you did not write reads
+						differently from code you did — without opening or editing them.</p>
 				</div>
 				<div class="tab">
-					<h4><code>Analysis</code></h4>
-					<p>Cross-reference and heatmap views over the project: which files are busy,
-						and which symbols are referenced from where.</p>
+					<h4>Analysis</h4>
+					<p>Where the activity is. Which files carry most of the work, and which symbols
+						the rest of the project leans on.</p>
 				</div>
 				<div class="tab">
-					<h4><code>Settings</code></h4>
-					<p>Editor settings, decoration colours and opacities, identity management,
-						and the FreeBASIC installation folder. This is the tab the panel opens on.</p>
+					<h4>Settings</h4>
+					<p>Everything configurable in one place: how much colour, how much emphasis,
+						where your FreeBASIC lives, and who you are annotating as.</p>
 				</div>
 			</div>
+
+			<h3>Narrowing down</h3>
+			<p>The lists are big, because real projects are. You can cut them down to the file
+				you currently have open, or to the files actually visible on screen — so the
+				panel answers "what is here right now" instead of "what exists somewhere".</p>
+
+			<p>When a list comes up empty, it says <em>why</em>: nothing in this file, nothing
+				matching your search, nothing in this category. A blank list with no explanation
+				is worse than no list.</p>
 		</section>
 
 		<section id="groups">
 			<h2>Colour groups</h2>
 
-			<p>This is the part that has no equivalent in other FreeBASIC tooling. Instead of
-				one keyword colour for the whole file, the project is divided into named groups,
-				and each group has one colour.</p>
+			<p>Most editors give a file one keyword colour, and that is the whole idea. This
+				one starts somewhere else: the project is divided into named groups, and each
+				group has one colour.</p>
 
-			<p>Groups are declared in your configuration with an <code>@define</code> directive.
-				The three numbers are <strong>H, S, L</strong> — hue, saturation and lightness —
-				and the editor converts them to a colour itself:</p>
+			<p>Call them whatever fits — <em>Library</em>, <em>Own code</em>, <em>Interface</em>,
+				<em>Needs review</em>. The name is yours; it is not tied to any part of the
+				language.</p>
 
-			<pre><code>'@define 0 Library 210, 60, 55
-'@define 1 Own Code 120, 76, 51
-'@define 2 UI code 30, 30, 30</code></pre>
+			<h3>Assign once, follow everywhere</h3>
+			<p>Put a symbol in a group once. It takes that colour in the code, in its hover card
+				and in the sidebar. Nothing has to be kept in step afterwards.</p>
 
-			<h3>Inheritance and overrides</h3>
-			<p>A symbol with no group of its own inherits the colour of the group that owns it.
-				A symbol can also carry its own group tag, which overrides the surrounding group —
-				so one symbol in a library block can be moved into <code>Own Code</code> without
-				being lifted out of its block.</p>
+			<h3>Group a block, or single out one symbol</h3>
+			<p>A group is inherited by everything inside it, so assigning a whole block is one
+				action rather than hundreds. But any individual symbol can step out and join a
+				different group — one function in a library block can be moved into your own
+				group without being lifted out of the block it lives in.</p>
 
-			<p>Symbols with no group at all land in a reserved <code>Ungrouped</code> group, which
-				is always sorted last so the list order stays predictable. Disabling a group hides
-				it without deleting it.</p>
+			<h3>Turning things off without losing them</h3>
+			<p>A group can be disabled. It stops colouring and leaves the sidebar, but it is
+				still there, and switching it back on brings the arrangement back with it.</p>
 
-			<h3>Scope awareness</h3>
-			<p>Group resolution follows scope. If a local variable shadows a module-level one of
-				the same name, hover, colouring and group assignment all resolve to the one you are
-				actually pointing at — the inner one — rather than the first name match found in
-				the file.</p>
+			<h3>Nothing falls through the cracks</h3>
+			<p>Symbols you have not grouped yet are gathered into one holding group, kept in a
+				fixed position so the list never quietly reshuffles under you. It is also how
+				you find out what is still unaccounted for.</p>
 
-			<h3>Several annotators, one codebase</h3>
-			<p>Groups, colours and favourites are stored per identity, and every marker written
-				into your code carries that identity. Several people can annotate the same
-				codebase without overwriting each other. The <code>userId</code> setting chooses
-				which identity you are; you create further ones from Settings.</p>
+			<h3>Several people, one codebase</h3>
+			<p>Groups, colours and favourites belong to a person, not to the project file.
+				Everyone annotating the same code gets their own view, and nobody overwrites
+				anybody else. Switch identity in the panel; add more people when you need to.</p>
 		</section>
 
 		<section id="editor">
 			<h2>In the editor</h2>
 
-			<h3>Hover</h3>
-			<p>Hovering a symbol shows its kind, name and group on the first line, followed by
-				callers, type and scope information. From a hover card you can move the symbol
-				to a different group without leaving the file.</p>
+			<h3>Hover tells you the useful thing</h3>
+			<p>Hover any symbol to see what it is, which group it belongs to, and who uses it.
+				You can move it to a different group straight from the hover card, without
+				leaving the file you are reading.</p>
 
-			<h3>Decorations</h3>
-			<ul class="plain">
-				<li>A highlight for code lines that belong to a tag group — colour and opacity are
-					settings.</li>
-				<li>A background bar across the whole line of a function block, and separate
-					lines at its top and bottom, each with its own opacity.</li>
-				<li>A star in the editor gutter marking a favourite, optionally also in the
-					overview ruler beside the scrollbar.</li>
-			</ul>
+			<h3>Resolving follows scope</h3>
+			<p>A local variable that shadows a module-level one of the same name is a real
+				problem in every language. Here, hover, colouring and group changes all follow
+				scope, so they describe the symbol you are actually pointing at — the inner one —
+				rather than the first name match in the file.</p>
 
-			<h3>Diagnostics</h3>
-			<p>The server reports unresolved calls, but suppresses the ones that are not your
-				fault: symbols that come from the FreeBASIC header libraries, and library
-				code that is not part of your project. What reaches you is meant to be
-				actionable.</p>
+			<h3>Structure you can see</h3>
+			<p>Group membership tints your code, and function blocks are marked out so a long
+				routine has a visible shape instead of running off the screen. How much of
+				both you see is up to you.</p>
 
-			<h3>Overload resolution</h3>
-			<p>When a project uses overloaded functions, the server resolves the call against
-				the argument types — literals, local and module-level variables, expression
-				results, conversion functions, type aliases, and object member calls — and
-				tells you which definition the call actually binds to.</p>
+			<h3>Your regulars, marked</h3>
+			<p>The functions you marked as favourites are starred beside the code, so the two or
+				three you actually work with are findable at a glance in a file you have not
+				opened in months.</p>
 
-			<h3>Compile and run</h3>
-			<p>The compile command builds the checked files in one <code>fbc</code> invocation,
-				passing <code>-include generated.bi</code> ahead of the file names, and shows the
-				compiler's own output unchanged.</p>
-		</section>
+			<h3>Overloads resolve out loud</h3>
+			<p>When a project uses overloaded functions, the editor works out which one your
+				call binds to, and shows you. Literals, variables, expressions and object
+				properties are all taken into account, instead of leaving you to work it out
+				from the parameter list.</p>
 
-		<section id="commands">
-			<h2>Commands</h2>
-			<div class="table-scroll">
-				<table>
-					<thead>
-						<tr>
-							<th>Command</th>
-							<th>Title</th>
-							<th>Notes</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>freebasic-lsp.showUI</code></td>
-							<td>FreeBASIC LSP: Show UI</td>
-							<td>Reveals the sidebar view.</td>
-						</tr>
-						<tr>
-							<td><code>freebasic-lsp.addFavouriteContext</code></td>
-							<td>⭐ Add to Favourites</td>
-							<td>Also on the editor context menu.</td>
-						</tr>
-						<tr>
-							<td><code>freebasic-lsp.removeFavouriteContext</code></td>
-							<td>⭐ Remove from Favourites</td>
-							<td>Also on the editor context menu.</td>
-						</tr>
-						<tr>
-							<td><code>freebasic-lsp.disableGroupAtCursor</code></td>
-							<td>✖ Disable Group color</td>
-							<td>Context menu; only offered on an enabled group.</td>
-						</tr>
-						<tr>
-							<td><code>freebasic-lsp.enableGroupAtCursor</code></td>
-							<td>✔ Enable Group color</td>
-							<td>Context menu; only offered on a disabled group.</td>
-						</tr>
-						<tr>
-							<td><code>freebasic-lsp.toggleCodeLens</code></td>
-							<td>Toggle CodeLens visibility</td>
-							<td><code>Ctrl+Shift+L</code> / <code>Cmd+Shift+L</code>.</td>
-						</tr>
-						<tr>
-							<td><code>freebasic-lsp.generateBi</code></td>
-							<td>FreeBASIC LSP: Generate .bi (all files)</td>
-							<td>Writes a declare line per module-level function and sub.</td>
-						</tr>
-						<tr>
-							<td><code>freebasic-lsp.compile</code></td>
-							<td>FreeBASIC LSP: Compile project</td>
-							<td>Builds the checked files in one <code>fbc</code> call.</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</section>
-
-		<section id="settings">
-			<h2>Settings</h2>
-			<div class="table-scroll">
-				<table>
-					<thead>
-						<tr>
-							<th>Setting</th>
-							<th>Default</th>
-							<th>What it does</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>freebasic.userId</code></td>
-							<td><code>"me"</code></td>
-							<td>The identity your annotations are written under. Letters, numbers,
-								<code>_</code> and <code>-</code>. An empty
-								<code>&lt;userId&gt;.userid</code> is created for you.</td>
-						</tr>
-						<tr>
-							<td><code>freebasic.location</code></td>
-							<td><code>""</code></td>
-							<td>FreeBASIC installation folder — the one containing
-								<code>inc\</code>. Used to find header libraries behind
-								<code>#include</code> so external libraries can be coloured by group.
-								Empty means nothing is guessed.</td>
-						</tr>
-						<tr>
-							<td><code>freebasic.files.initialSelection</code></td>
-							<td><code>"ask"</code></td>
-							<td>What belongs to the project before the Files tab has a saved
-								selection: <code>ask</code>, <code>all</code> or
-								<code>none</code>.</td>
-						</tr>
-						<tr>
-							<td><code>freebasic.decorationColor</code></td>
-							<td><code>rgba(69, 69, 69, 1)</code></td>
-							<td>Highlight drawn on code lines that belong to a tag group.</td>
-						</tr>
-						<tr>
-							<td><code>freebasic.blockBgAlpha</code></td>
-							<td><code>0.04</code></td>
-							<td>Opacity of the function-block background bar drawn across the whole
-								line. 0 is invisible, 1 solid.</td>
-						</tr>
-						<tr>
-							<td><code>freebasic.blockBorderAlpha</code></td>
-							<td><code>0.25</code></td>
-							<td>Opacity of the function block's top and bottom lines.</td>
-						</tr>
-						<tr>
-							<td><code>freebasic.favourites.decorations</code></td>
-							<td><code>"gutter"</code></td>
-							<td>Where the favourite star appears: <code>gutter</code>,
-								<code>overview</code>, <code>all</code> or <code>none</code>.</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</section>
-
-		<section id="under">
-			<h2>Architecture</h2>
-
-			<p>The project is two programs that talk JSON-RPC over stdio.</p>
-
-			<ul class="plain">
-				<li><strong>The extension</strong> is TypeScript. It owns the LSP client, the
-					sidebar webview, hover cards, jump targets, decorations and settings.</li>
-				<li><strong>The language server</strong> is VB.NET with a Tree-sitter FreeBASIC
-					grammar. It does the parsing and all colour computation, and returns
-					decorations rather than hard-coding them in the client.</li>
-			</ul>
-
-			<p>Keeping colour decisions on the server side means the same rules apply to
-				decorations, hovers and sidebar rows — they cannot drift apart, because there
-				is only one implementation of each rule.</p>
-
-			<p>The <code>generated.bi</code> mechanism follows the FreeBASIC compiler's own
-				<code>-include</code> flag: the server writes a declare line for every
-				module-level function and sub, and the compile command passes that one file
-				before the module names, so every module sees every signature.</p>
+			<h3>Problems, minus the noise</h3>
+			<p>Unresolved names are reported — but the ones coming from FreeBASIC's own headers
+				are filtered away, and library code is not held against you. What you are shown
+				is meant to be yours to fix.</p>
 		</section>
 
 		<footer>
-			<p>FreeBASIC Panel &middot; version 0.0.1. Built against FreeBASIC 1.20.0 in the
-				default <code>fb</code> dialect.</p>
+			<p>FreeBASIC Panel &middot; a Visual Studio Code extension for FreeBASIC.</p>
 		</footer>
 
 	</div>
