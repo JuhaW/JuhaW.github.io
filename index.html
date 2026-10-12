@@ -30,18 +30,30 @@
 
     <!-- ⭐ NAVIGAATIO. Oma elementtinsä, EI minkään näkymän sisällä.
          Näin se pysyy näkyvissä vaikka jokin näkymä piilotetaan.
-         Yli 1100 px leveydella se on position: fixed (CSS). -->
+         Yli 1100 px leveydella se on position: fixed (CSS).
+
+         Ryhmät eivät ole koriste: jokainen ryhmä on ne ominaisuudet
+         jotka liittyvät samaan työhön. Paneelien sisältöä luettua
+         ryhmät: värit / lista / editori / kääntäminen. -->
     <ul class="browse-list" id="browseList">
         <li><button type="button" class="browse-item is-active" data-key="main">Main page</button></li>
+
+        <li class="browse-group" role="presentation"><span>Colouring</span></li>
         <li><button type="button" class="browse-item" data-key="groups">Colour groups</button></li>
         <li><button type="button" class="browse-item" data-key="inherit">Inherited groups</button></li>
         <li><button type="button" class="browse-item" data-key="instances">Instance colours</button></li>
+
+        <li class="browse-group" role="presentation"><span>Finding your way</span></li>
         <li><button type="button" class="browse-item" data-key="views">The six views</button></li>
         <li><button type="button" class="browse-item" data-key="scope">Scope filter</button></li>
+        <li><button type="button" class="browse-item" data-key="favourites">Favourites</button></li>
+
+        <li class="browse-group" role="presentation"><span>In the editor</span></li>
         <li><button type="button" class="browse-item" data-key="hover">Hover</button></li>
         <li><button type="button" class="browse-item" data-key="overload">Overload resolution</button></li>
-        <li><button type="button" class="browse-item" data-key="favourites">Favourites</button></li>
         <li><button type="button" class="browse-item" data-key="diagnostics">Diagnostics</button></li>
+
+        <li class="browse-group" role="presentation"><span>Building</span></li>
         <li><button type="button" class="browse-item" data-key="declare">Declarations &amp; build</button></li>
     </ul>
 

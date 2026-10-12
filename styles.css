@@ -4,6 +4,10 @@
     --card-hover: #26334d;
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
+	/* Ryhmien otsikot: himmeampi kuin kohtien teksti, mutta ei niin
+	   himmeä että se katoaa. Kontrasti laskettu taustaa #1e293b
+	   vastaan: mitattu 5.13:1, ylittää WCAG AA:n (4.5:1). */
+	--text-dim: #8b9ab3;
     --accent: #38bdf8;
     --accent-glow: rgba(56, 189, 248, 0.15);
     --border: #334155;
@@ -474,11 +478,24 @@ footer {
 	overflow-y: auto;
 }
 
+/* Ryhmän otsikko. Ei ole painettava eikä valinta: se kertoo mihin
+   seuraavat kohdat kuuluvat. Pieni, iso kirjasin, himmeä väri -
+   se ei saa kilpailla itse kohtien kanssa. */
+.browse-group {
+	padding: 0.55rem 1rem 0.15rem;
+	font-size: 0.7rem;
+	font-weight: 700;
+	letter-spacing: 0.09em;
+	text-transform: uppercase;
+	color: var(--text-dim);
+}
+
 .browse-item {
 	display: block;
 	width: 100%;
 	text-align: left;
-	padding: 0.7rem 1rem;
+	padding: 0.44rem 1rem;
+	line-height: 1.35;
 	background: none;
 	border: 0;
 	border-left: 3px solid transparent;
