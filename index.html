@@ -76,9 +76,10 @@
         <figure class="shot">
             <img src="img/panel.png" width="368" height="385"
                  alt="The FreeBASIC LSP sidebar: six tabs, a Favourites section, a search box, a scope filter showing visible files, and functions listed under the colour groups Kirjasto and Yhteinen.">
-            <figcaption><strong>The panel.</strong> Six views of the project. The list can be
-                cut down to what is visible on screen — <span class="mono">(6/20)</span> is how
-                much of the project is in view right now.</figcaption>
+            <figcaption><strong>The panel.</strong> Six views of the project, with everything grouped by
+                colour. The list can be cut down to what is visible on screen —
+                <span class="mono">(27/28)</span> is how much of the project is in view
+                right now.</figcaption>
         </figure>
 
         <!-- Ongelma vs Ratkaisu -->
@@ -133,12 +134,14 @@
             </div>
 
             <figure class="shot">
-                <img src="img/editor.png" width="1050" height="620"
-                     alt="The editor with three functions. Each carries a coloured name and a grey tag showing which group it belongs to: '@a.Kirjasto.me' in green, '@a.Yhteinen.me' in purple. The function blocks are tinted to match.">
-                <figcaption>Each function carries its group as a tag next to it — here
-                    <strong>@a.Kirjasto.me</strong> in green and <strong>@a.Yhteinen.me</strong> in
-                    purple. The tag is how a group survives a rename, a move between files, and a
-                    colleague opening the same code.</figcaption>
+                <img src="img/editor.png" width="1048" height="560"
+                     alt="The editor. Six module-level variables: the type Vec2 is blue, but gPlayerPos is orange and gTargetPos and gSpawnPoint are red — same type, different groups. Function names below are coloured by their own group.">
+                <figcaption>Every symbol carries its group as a tag beside it — here
+                    <strong>'@a.Player.me</strong> in orange, <strong>'@a.Enemy.me</strong> in red,
+                    <strong>'@a.Engine.me</strong> in blue. Note the two <code>Vec2</code> variables
+                    near the top: both are the same type, and both are a different colour from it.
+                    The tag is how a group survives a rename, a move between files, and a colleague
+                    opening the same code.</figcaption>
             </figure>
 
             <div class="workflow-grid" style="margin-top: 2.5rem;">
