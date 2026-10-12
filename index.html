@@ -64,6 +64,23 @@
 
     <main class="container">
 
+        <figure class="shot">
+            <img src="img/window.png" width="1470" height="640"
+                 alt="VS Code with the FreeBASIC Panel sidebar open on the left, showing functions grouped by colour, and the editor on the right where each function carries its group's colour.">
+            <figcaption>The whole thing in one window: <strong>the panel</strong> lists what the
+                project contains, grouped by colour; <strong>the editor</strong> shows those same
+                functions in their group's colour. Both come from the same analysis, so they
+                cannot disagree.</figcaption>
+        </figure>
+
+        <figure class="shot">
+            <img src="img/panel.png" width="368" height="385"
+                 alt="The FreeBASIC LSP sidebar: six tabs, a Favourites section, a search box, a scope filter showing visible files, and functions listed under the colour groups Kirjasto and Yhteinen.">
+            <figcaption><strong>The panel.</strong> Six views of the project. The list can be
+                cut down to what is visible on screen — <span class="mono">(6/20)</span> is how
+                much of the project is in view right now.</figcaption>
+        </figure>
+
         <!-- Ongelma vs Ratkaisu -->
         <section id="features" class="section">
             <div class="section-title">
@@ -115,7 +132,16 @@
                 <p>Most editors give a file one keyword colour. This one lets you invent your own.</p>
             </div>
 
-            <div class="workflow-grid">
+            <figure class="shot">
+                <img src="img/editor.png" width="1050" height="620"
+                     alt="The editor with three functions. Each carries a coloured name and a grey tag showing which group it belongs to: '@a.Kirjasto.me' in green, '@a.Yhteinen.me' in purple. The function blocks are tinted to match.">
+                <figcaption>Each function carries its group as a tag next to it — here
+                    <strong>@a.Kirjasto.me</strong> in green and <strong>@a.Yhteinen.me</strong> in
+                    purple. The tag is how a group survives a rename, a move between files, and a
+                    colleague opening the same code.</figcaption>
+            </figure>
+
+            <div class="workflow-grid" style="margin-top: 2.5rem;">
                 <div class="workflow-step">
                     <div class="step-number">01</div>
                     <h3>Make a group</h3>

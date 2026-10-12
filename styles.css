@@ -393,6 +393,40 @@ footer {
     max-width: none;
 }
 
+/* Screenshots */
+.shot {
+    margin: 2.5rem 0 0;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: #05070d;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
+
+.shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.shot figcaption {
+    padding: 0.9rem 1.25rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    border-top: 1px solid var(--border);
+    background: var(--card-bg);
+}
+
+.shot figcaption strong {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.shot figcaption .mono {
+    font-family: 'Fira Code', monospace;
+    color: var(--text-main);
+}
+
 /* Responsive */
 @media (max-width: 900px) {
     .hero-grid { grid-template-columns: 1fr; }
