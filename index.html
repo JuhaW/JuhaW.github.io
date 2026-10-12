@@ -294,6 +294,58 @@ fbc -include generated.bi <span class="string">01_kirjasto.bas</span> <span clas
                             afterwards.</p>
                         <p class="browse-note">Groups are yours to name: Library, Own code, Interface,
                             Needs review. Nothing is tied to any part of the language.</p>
+
+                        <h4>Creating a group</h4>
+                        <ol class="browse-steps">
+                            <li>Open the <strong>Groups</strong> tab in the panel.</li>
+                            <li>Press the <strong>+</strong> button. A form opens with a name field, a
+                                colour swatch that already holds a colour, and two buttons. The swatch is
+                                a button too — you do not have to accept the colour you are given.</li>
+                            <li>Click the swatch. The colour picker opens: a <strong>Saturation</strong>
+                                slider, and a grid of colours drawn at that saturation. Click a colour and
+                                the swatch takes it.</li>
+                            <li>Type a name and press <strong>Add</strong>. Until the name is filled in,
+                                <strong>Add</strong> stays greyed out. If the name is already in use, the
+                                form says so and refuses — you never end up with two groups of one name.</li>
+                        </ol>
+
+                        <h4>Choosing the colour</h4>
+                        <p>The picker works in HSL: the slider sets how strong the colour is, the grid sets
+                            the hue and how light it is. Move the slider and the whole grid redraws, so you
+                            can walk from muted to vivid without leaving the picker. To change a group that
+                            already exists, click its colour dot in the list — the same picker opens.</p>
+
+                        <h4>Where it is kept</h4>
+                        <p>A new group is written straight into a plain text file in your project folder,
+                            named after you — <code>me.userid</code> for the default user. One line per
+                            group, the name, whether it is switched on, and its three colour numbers.
+                            It is a file you can open, read, and put in version control. If someone else
+                            works on the same project, their groups sit in their own file instead.</p>
+
+                        <h4>Putting a symbol in a group</h4>
+                        <p>Tag the line in your source code with the group name and your user name:</p>
+                        <pre class="browse-code"><code>Type Vec2                    '@a.Engine.me
+Dim Shared gTargetPos As Vec2   '@a.Enemy.me</code></pre>
+                        <p>The tag is a comment, so the compiler never sees it. You can also move a symbol
+                            to another group straight from its hover card, without editing the file.</p>
+
+                        <figure class="shot">
+                            <img src="img/groups.png" width="365" height="718"
+                                 alt="The Groups tab of the FreeBASIC Panel. Group Definitions lists six groups — Engine, Helpers, Player, Interface, Enemy and Legacy — each with a checkbox, a colour square, its symbol counts and the line it lives on in me.userid. Above the list the add form is open with the name Effects, a chosen green colour, an enabled Add button and Cancel. Below it the colour picker is open: a Saturation slider at 50 and a grid of colours.">
+                            <figcaption><strong>Creating a group.</strong> The existing groups, the add
+                                form with its colour swatch, and the colour picker with its Saturation
+                                slider and colour grid. Note the right-hand column: each group already
+                                says which line of <span class="mono">me.userid</span> it lives on.</figcaption>
+                        </figure>
+
+                        <figure class="shot">
+                            <img src="img/editor.png" width="1030" height="560"
+                                 alt="A FreeBASIC source file in VS Code. Each Type, variable and function declaration carries a trailing comment tag such as '&#64;a.Player.me, '&#64;a.Enemy.me or '&#64;a.Engine.me, and the declaration is drawn in the colour of that group.">
+                            <figcaption><strong>The result in the editor.</strong> Each line carries the tag
+                                that puts it in a group — <span class="mono">'&#64;a.Player.me</span> —
+                                and the declaration itself is drawn in that group's colour. Nothing is
+                                imported or declared for this to happen.</figcaption>
+                        </figure>
                     </div>
 
                     <div class="browse-panel" data-key="inherit" hidden>

@@ -556,6 +556,95 @@ footer {
 	font-size: 0.95rem;
 }
 
+/* Käyttöohjeen otsikko paneelin sisällä. Pienempi kuin h3,
+   koska se on kolmas taso, mutta selvästi otsikko: lihavointi,
+   väri ja ylämargin. */
+.browse-panel h4 {
+	margin: 1.8rem 0 0.6rem;
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--text-muted);
+}
+
+/* Numeroitu ohje. Numerot ovat omia li-elementtejään, jotta
+   ne toimivat myös ilman list-styleä. */
+.browse-steps {
+	margin: 0 0 1rem;
+	padding: 0;
+	list-style: none;
+	counter-reset: browse-step;
+	max-width: 60ch;
+}
+
+.browse-steps li {
+	position: relative;
+	padding-left: 2.1rem;
+	margin-bottom: 0.7rem;
+	color: var(--text-muted);
+	counter-increment: browse-step;
+}
+
+.browse-steps li::before {
+	content: counter(browse-step);
+	position: absolute;
+	left: 0;
+	top: 0.05rem;
+	width: 1.45rem;
+	height: 1.45rem;
+	border-radius: 50%;
+	background: var(--card-hover);
+	border: 1px solid var(--border);
+	color: var(--text-main);
+	font-size: 0.78rem;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.browse-steps strong,
+.browse-panel li strong {
+	color: var(--text-main);
+	font-weight: 600;
+}
+
+/* Tagiesimerkki. Ei syntaksiväritystä - tämä on kommentti,
+   ja se näyttää olevan kommentti myos sivustolla. */
+.browse-code {
+	margin: 0 0 1rem;
+	padding: 0.85rem 1rem;
+	background: var(--code-bg);
+	border: 1px solid var(--border);
+	border-radius: 0.5rem;
+	overflow-x: auto;
+	font-family: 'Fira Code', monospace;
+	font-size: 0.85rem;
+	line-height: 1.6;
+	color: #93a3bb;
+	white-space: pre;
+}
+
+.browse-panel code {
+	font-family: 'Fira Code', monospace;
+	font-size: 0.9em;
+	color: var(--accent);
+	background: var(--code-bg);
+	padding: 1px 5px;
+	border-radius: 3px;
+}
+
+/* Kuvat paneelissa. .shot on tarkoitettu leveään sisaltoon;
+   paneeli on kapeampi, joten marginaalit pois. */
+.browse-panel .shot {
+	margin: 1.5rem 0 0.5rem;
+}
+
+.browse-panel .shot img {
+	box-shadow: none;
+}
+
 @media (max-width: 1099px) {
 	/* Alle 1100 px kiintea paneeli olisi liian levea suhteessa sisaltoon.
 	   Siella lista palaa normaaliksi osaksi osiota. */
