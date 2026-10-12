@@ -399,7 +399,14 @@ footer {
 	grid-template-columns: 17rem 1fr;
 	gap: 1.5rem;
 	margin-top: 2.5rem;
-	align-items: start;
+	/* ⭐ KOKO OSIO MAHTUU NÄYTÖLLE. Vasen sarake (lista) pysyy
+	   paikallaan, oikea sarake (detaili) vieritetään omana
+	   alueenaan. Näin mitään ei tarvitse "kiinnittää" eikä
+	   liikkumavarasta tarvitse huolehtia - gridin korkeus on
+	   kiintea, ei sisallosta riippuva. */
+	height: calc(100vh - 11rem);
+	min-height: 26rem;
+	align-items: stretch;
 }
 
 .browse-list {
@@ -408,15 +415,9 @@ footer {
 	margin: 0;
 	border: 1px solid var(--border);
 	border-radius: 0.75rem;
-	overflow: hidden;
 	background: var(--card-bg);
-	/* ⭐ Lista pysyy aina näkyvissä vasemmassa, kun detailiä luetaan.
-	   top = otsikon korkeus (sticky header) + hengitysvara. Sama luku
-	   kuin html { scroll-padding-top }, jotta ankkurilinkit eivät
-	   työnny otsikon alle. */
-	position: sticky;
-	top: 5.5rem;
-	max-height: calc(100vh - 7.5rem);
+	/* Pysyy paikallaan gridin vasemmana sarakkeena. Oma vieritys
+	   vain silti varalta, etta matala ikkuna ei leikkaa riveja. */
 	overflow-y: auto;
 }
 
@@ -457,12 +458,8 @@ footer {
 	border: 1px solid var(--border);
 	border-radius: 0.75rem;
 	padding: 2rem;
-	/* Minikorkeus ON OLEMASSOLUUN SYYN: sticky-elementin liikkuma
-	   rajoittuu sen sisaltavan gridin korkeuteen. Jos detailipaneeli
-	   olisi lyhyempi kuin lista, gridin korkeus = listan korkeus eika
-	   listalla olisi lainkaan liikkumavaraa. Mitattu ennen: molemmat
-	   469px, sticky ei liikuut ollenkaan. Siksi tama > listan korkeus. */
-	min-height: 36rem;
+	/* Liikkuva osa: teksti vieritetään tämän sisällä, ei sivulla. */
+	overflow-y: auto;
 }
 
 .browse-panel[hidden] {
@@ -489,9 +486,16 @@ footer {
 }
 
 @media (max-width: 900px) {
-	.browse { grid-template-columns: 1fr; }
-	.browse-detail { min-height: 0; }
-	.browse-list { position: static; max-height: none; overflow-y: visible; }
+	.browse {
+		grid-template-columns: 1fr;
+		height: auto;
+		min-height: 0;
+	}
+	.browse-detail {
+		overflow-y: visible;
+		min-height: 0;
+	}
+	.browse-list { overflow-y: visible; }
 }
 
 /* Screenshots */
