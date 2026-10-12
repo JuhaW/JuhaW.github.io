@@ -2,170 +2,169 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>FreeBASIC Panel — see what your FreeBASIC project actually contains</title>
-	<meta name="description"
-		content="An editor sidebar for FreeBASIC: a live map of your project, and colour groups that follow your symbols from the sidebar into the code.">
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeBASIC Panel — Visual Studio Code Extension</title>
+    <meta name="description" content="An editor panel and visual tool for FreeBASIC projects in VS Code. Automatic declarations, library handling and one-command builds.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-	<header>
-		<div class="wrap">
-			<h1>FreeBASIC Panel</h1>
-			<nav>
-				<a href="#sidebar">The sidebar</a>
-				<a href="#groups">Colour groups</a>
-				<a href="#editor">In the editor</a>
-			</nav>
-		</div>
-	</header>
+    <header class="site-header">
+        <div class="container header-content">
+            <div class="logo">
+                <span class="badge-tag">VS Code Extension</span>
+                <h1>FreeBASIC Panel</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="#features">Why?</a>
+                <a href="#how-it-works">How it works</a>
+                <a href="#automation">Automation</a>
+            </nav>
+        </div>
+    </header>
 
-	<div class="wrap">
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <div class="pill">🚀 Stop maintaining declaration headers by hand</div>
+                <h2>Take control of your FreeBASIC project</h2>
+                <p class="hero-lead">
+                    FreeBASIC Panel brings the automation and clarity of a modern development
+                    environment straight into VS Code. It removes the two things that eat your
+                    time in multi-module FreeBASIC projects: copy-pasted <code>Declare</code>
+                    lines that never stay in sync, and library includes you have to keep guessing at.
+                </p>
+                <div class="hero-cta">
+                    <a href="https://github.com/JuhaW/Vscode_Extension_Freebasic_LSP" class="btn btn-primary">Get it from GitHub</a>
+                    <a href="#features" class="btn btn-secondary">See what it does</a>
+                </div>
+            </div>
+            <div class="hero-card-preview">
+                <div class="code-preview-box">
+                    <div class="window-header">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                        <span class="window-title">generated.bi (written for you)</span>
+                    </div>
+                    <pre><code><span class="comment">' Declare lines only — no bodies</span>
+<span class="comment">' and no variable definitions</span>
 
-		<div class="hero">
-			<div class="kicker">For Visual Studio Code &middot; FreeBASIC</div>
-			<h2>See what your project actually contains — and colour it the way you think about it.</h2>
+<span class="keyword">Declare Sub</span> subway(<span class="keyword">ByVal</span> handle <span class="type">As ULong</span>)
+<span class="keyword">Declare Function</span> ApuSumma(n <span class="type">As Integer</span>) <span class="type">As Integer</span>
+<span class="keyword">Declare Sub</span> ApuKirjaa(teksti <span class="type">As String</span>)</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
 
-			<p>FreeBASIC Panel builds a live map of a FreeBASIC project: every function,
-				every type, every variable, and every library your code pulls in. It shows
-				you what is there, what depends on what, and which parts of the project the
-				work is concentrated in.</p>
+    <main class="container">
 
-			<p>On top of that map you can organise your symbols into colour groups you name
-				yourself. A symbol belongs to a group, the group has a colour, and that colour
-				follows the symbol everywhere it appears — in the editor, in the hover card,
-				and in the sidebar.</p>
-		</div>
+        <!-- Ongelma vs Ratkaisu -->
+        <section id="features" class="section">
+            <div class="section-title">
+                <h2>What problems does this solve?</h2>
+                <p>Growing FreeBASIC projects hit the same handful of walls over and over.</p>
+            </div>
 
-		<section id="sidebar">
-			<h2>The sidebar</h2>
-			<p>One panel along the side of the editor, six views into the project.</p>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon">❌</div>
+                    <h3>The usual way</h3>
+                    <ul class="feature-list bad">
+                        <li>Copying <code>Declare</code> lines from file to file, by hand, forever.</li>
+                        <li>Calls that break the moment you reorder your modules.</li>
+                        <li>Guessing how a library like BASS, SDL3 or Cairo wants to be declared.</li>
+                    </ul>
+                </div>
 
-			<div class="tabs">
-				<div class="tab">
-					<h4>Functions</h4>
-					<p>Everything you can call, gathered under its colour group. See who calls
-						what, jump straight to any definition, and mark the handful of functions you
-						keep coming back to as favourites.</p>
-				</div>
-				<div class="tab">
-					<h4>Types</h4>
-					<p>Your own types and enumerations, opened up into the variables of that type
-						and the functions that belong to it.</p>
-				</div>
-				<div class="tab">
-					<h4>Groups</h4>
-					<p>Where the colour groups live. Create them, rename them, recolour them,
-						reorder them by dragging, or switch one off without losing it.</p>
-				</div>
-				<div class="tab">
-					<h4>Files</h4>
-					<p>The modules in your project and the libraries they include. Library files
-						can be given a group of their own, so code you did not write reads
-						differently from code you did — without opening or editing them.</p>
-				</div>
-				<div class="tab">
-					<h4>Analysis</h4>
-					<p>Where the activity is. Which files carry most of the work, and which symbols
-						the rest of the project leans on.</p>
-				</div>
-				<div class="tab">
-					<h4>Settings</h4>
-					<p>Everything configurable in one place: how much colour, how much emphasis,
-						where your FreeBASIC lives, and who you are annotating as.</p>
-				</div>
-			</div>
+                <div class="card highlight-card">
+                    <div class="card-icon">✨</div>
+                    <h3>With FreeBASIC Panel</h3>
+                    <ul class="feature-list good">
+                        <li><strong>Fully automatic:</strong> every module-level function and sub gets
+                            its declaration written for you.</li>
+                        <li><strong>Order stops mattering:</strong> every module sees every other
+                            module's signatures, so a call no longer fails just because of file order.</li>
+                        <li><strong>Type accuracy:</strong> parameter types are copied from the
+                            definition rather than retyped — so a call that should bind to one
+                            overload binds to that one.</li>
+                    </ul>
+                </div>
 
-			<h3>Narrowing down</h3>
-			<p>The lists are big, because real projects are. You can cut them down to the file
-				you currently have open, or to the files actually visible on screen — so the
-				panel answers "what is here right now" instead of "what exists somewhere".</p>
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3>The result</h3>
+                    <ul class="feature-list result">
+                        <li>You write application logic instead of bookkeeping.</li>
+                        <li>Renaming or moving a function needs no follow-up edits anywhere.</li>
+                        <li>The whole project builds in one command.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-			<p>When a list comes up empty, it says <em>why</em>: nothing in this file, nothing
-				matching your search, nothing in this category. A blank list with no explanation
-				is worse than no list.</p>
-		</section>
+        <!-- Miten se toimii käytännössä -->
+        <section id="how-it-works" class="section">
+            <div class="section-title">
+                <h2>How it takes the work off your plate</h2>
+                <p>What the tool does in the background, while you get on with the actual code.</p>
+            </div>
 
-		<section id="groups">
-			<h2>Colour groups</h2>
+            <div class="workflow-grid">
+                <div class="workflow-step">
+                    <div class="step-number">01</div>
+                    <h3>Declarations, generated</h3>
+                    <p>The extension reads your modules and collects every module-level function and sub. That list is written to a single file which the compiler is told to read first, so no module ever calls something the compiler has not been told about.</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">02</div>
+                    <h3>Libraries without the guesswork</h3>
+                    <p>Include lines are listed in the Files view, where you can see at a glance what your project pulls in and give library code a colour of its own. Point the extension at your FreeBASIC installation and the header libraries behind those includes are recognised too — so a type name coming from a header is not reported as an unknown symbol.</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">03</div>
+                    <h3>One command to build</h3>
+                    <p>However many modules the project has, the checked files go to the compiler in a single invocation with the generated declarations ahead of the file names. The compiler's own output is shown unchanged.</p>
+                </div>
+            </div>
+        </section>
 
-			<p>Most editors give a file one keyword colour, and that is the whole idea. This
-				one starts somewhere else: the project is divided into named groups, and each
-				group has one colour.</p>
+        <!-- Koodiesimerkki -->
+        <section id="automation" class="section code-showcase">
+            <div class="section-title">
+                <h2>What the files look like</h2>
+                <p>Your own code stays untouched. The generated file lives beside it.</p>
+            </div>
 
-			<p>Call them whatever fits — <em>Library</em>, <em>Own code</em>, <em>Interface</em>,
-				<em>Needs review</em>. The name is yours; it is not tied to any part of the
-				language.</p>
+            <div class="code-comparison">
+                <div class="code-box">
+                    <h4>Your module — includes stay here</h4>
+                    <pre><code><span class="comment">' Includes belong in your code</span>
+<span class="keyword">#include_once</span> <span class="string">"bass.bi"</span>
 
-			<h3>Assign once, follow everywhere</h3>
-			<p>Put a symbol in a group once. It takes that colour in the code, in its hover card
-				and in the sidebar. Nothing has to be kept in step afterwards.</p>
+<span class="comment">' No declarations needed</span>
+subway(100)
+<span class="keyword">Dim</span> tulos <span class="keyword">As Integer</span> = ApuSumma(5)</code></pre>
+                </div>
+                <div class="code-box">
+                    <h4>The build command</h4>
+                    <pre><code><span class="comment"># Generated file first, output flag last</span>
+fbc -include generated.bi <span class="string">01_kirjasto.bas</span> <span class="string">02_apumoduuli.bas</span> -x peli.exe</code></pre>
+                </div>
+            </div>
+        </section>
 
-			<h3>Group a block, or single out one symbol</h3>
-			<p>A group is inherited by everything inside it, so assigning a whole block is one
-				action rather than hundreds. But any individual symbol can step out and join a
-				different group — one function in a library block can be moved into your own
-				group without being lifted out of the block it lives in.</p>
+    </main>
 
-			<h3>Turning things off without losing them</h3>
-			<p>A group can be disabled. It stops colouring and leaves the sidebar, but it is
-				still there, and switching it back on brings the arrangement back with it.</p>
-
-			<h3>Nothing falls through the cracks</h3>
-			<p>Symbols you have not grouped yet are gathered into one holding group, kept in a
-				fixed position so the list never quietly reshuffles under you. It is also how
-				you find out what is still unaccounted for.</p>
-
-			<h3>Several people, one codebase</h3>
-			<p>Groups, colours and favourites belong to a person, not to the project file.
-				Everyone annotating the same code gets their own view, and nobody overwrites
-				anybody else. Switch identity in the panel; add more people when you need to.</p>
-		</section>
-
-		<section id="editor">
-			<h2>In the editor</h2>
-
-			<h3>Hover tells you the useful thing</h3>
-			<p>Hover any symbol to see what it is, which group it belongs to, and who uses it.
-				You can move it to a different group straight from the hover card, without
-				leaving the file you are reading.</p>
-
-			<h3>Resolving follows scope</h3>
-			<p>A local variable that shadows a module-level one of the same name is a real
-				problem in every language. Here, hover, colouring and group changes all follow
-				scope, so they describe the symbol you are actually pointing at — the inner one —
-				rather than the first name match in the file.</p>
-
-			<h3>Structure you can see</h3>
-			<p>Group membership tints your code, and function blocks are marked out so a long
-				routine has a visible shape instead of running off the screen. How much of
-				both you see is up to you.</p>
-
-			<h3>Your regulars, marked</h3>
-			<p>The functions you marked as favourites are starred beside the code, so the two or
-				three you actually work with are findable at a glance in a file you have not
-				opened in months.</p>
-
-			<h3>Overloads resolve out loud</h3>
-			<p>When a project uses overloaded functions, the editor works out which one your
-				call binds to, and shows you. Literals, variables, expressions and object
-				properties are all taken into account, instead of leaving you to work it out
-				from the parameter list.</p>
-
-			<h3>Problems, minus the noise</h3>
-			<p>Unresolved names are reported — but the ones coming from FreeBASIC's own headers
-				are filtered away, and library code is not held against you. What you are shown
-				is meant to be yours to fix.</p>
-		</section>
-
-		<footer>
-			<p>FreeBASIC Panel &middot; a Visual Studio Code extension for FreeBASIC.</p>
-		</footer>
-
-	</div>
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; FreeBASIC Panel &middot; Built for FreeBASIC projects in VS Code.</p>
+        </div>
+    </footer>
 
 </body>
 
