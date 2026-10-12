@@ -531,6 +531,11 @@ footer {
 	padding: 2rem;
 	/* Liikkuva osa: teksti vieritetään tämän sisällä, ei sivulla. */
 	overflow-y: auto;
+	/* ⭐ Tämä on @container-kyselyjen mittari: paneelin oma leveys.
+	   Ilman tätä .browse-splitin kynnys olisi sidottu ikkunaan,
+	   vaikka paneelin leveys riippuu kiinteasta vasemasta
+	   listasta eikä ikkunasta. */
+	container-type: inline-size;
 }
 
 .browse-panel[hidden] {
@@ -635,6 +640,35 @@ footer {
 	border-radius: 3px;
 }
 
+/* Selitys ja kuva rinnakkain: teksti vasemmalla, kuva oikealla.
+   Leveys mitataan ASTIasta (container), ei ikkunasta: paneelin
+   leveys ei riipu ikkunan leveydesta vaan siita, onko kiintea
+   vasen lista paikallaan. @media rikkoisi taman.
+
+   Kuva on 365 px levea ja teksti haluaa vahintaan ~330 px,
+   joten yhden sarakkeen alaiselle kaatuminen oikea kynnys on
+   365 + 330 + rako 28 = 723; pyydetään varmuuden vuoksi 780. */
+.browse-split {
+	display: grid;
+	/* Kuvasarakkeen leveys on 367 px, EI 365.
+	   365 on kuvan oma leveys, mutta .shot:lla on 1 px reunu
+	   joka puolelta (mitattu: figure 365 -> sisaleveys 363 ->
+	   kuva renderöityy 363, eli 2 px Skaalattu). Siksi
+	   sarakkeeseen mahtuu täsmälleen kuvan koko.
+
+	   `auto` sen sijaan oli virhe: auto-sarake mitoittuu
+	   kuvatekstin rivin pituuteen, ja pitkä teksti vei koko
+	   rivin leveydesta niin etta tekstisarake jai 0 px
+	   leveaksi (mitattu: "0px 791px"). */
+	grid-template-columns: minmax(0, 1fr) 367px;
+	gap: 1.75rem;
+	align-items: start;
+}
+
+.browse-split-text {
+	min-width: 0;   /* sallii tekstin kutistua, ei ylivuotoa */
+}
+
 /* Kuvat paneelissa. .shot on tarkoitettu leveään sisaltoon;
    paneeli on kapeampi, joten marginaalit pois. */
 .browse-panel .shot {
@@ -643,6 +677,17 @@ footer {
 
 .browse-panel .shot img {
 	box-shadow: none;
+}
+
+/* Kapealla paneelilla selitys ja kuva allekkain, muuten teksti
+   joutuisi liian kapeaksi lukemiseksi.
+   Kynnys 800 px = 367 (kuva) + 28 (rako) + ~330 (tekstin
+   minimi) pyöristettynä ylös. Mitattu: 801 -> kaksi saraketta,
+   800 -> yksi. */
+@container (max-width: 800px) {
+	.browse-split {
+		grid-template-columns: 1fr;
+	}
 }
 
 @media (max-width: 1099px) {

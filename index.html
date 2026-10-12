@@ -295,6 +295,9 @@ fbc -include generated.bi <span class="string">01_kirjasto.bas</span> <span clas
                         <p class="browse-note">Groups are yours to name: Library, Own code, Interface,
                             Needs review. Nothing is tied to any part of the language.</p>
 
+                        <div class="browse-split">
+                            <div class="browse-split-text">
+
                         <h4>Creating a group</h4>
                         <ol class="browse-steps">
                             <li>Open the <strong>Groups</strong> tab in the panel.</li>
@@ -313,7 +316,7 @@ fbc -include generated.bi <span class="string">01_kirjasto.bas</span> <span clas
                         <p>The picker works in HSL: the slider sets how strong the colour is, the grid sets
                             the hue and how light it is. Move the slider and the whole grid redraws, so you
                             can walk from muted to vivid without leaving the picker. To change a group that
-                            already exists, click its colour dot in the list — the same picker opens.</p>
+                            already exists, click its colour square in the list — the same picker opens.</p>
 
                         <h4>Where it is kept</h4>
                         <p>A new group is written straight into a plain text file in your project folder,
@@ -329,14 +332,17 @@ Dim Shared gTargetPos As Vec2   '@a.Enemy.me</code></pre>
                         <p>The tag is a comment, so the compiler never sees it. You can also move a symbol
                             to another group straight from its hover card, without editing the file.</p>
 
-                        <figure class="shot">
-                            <img src="img/groups.png" width="365" height="718"
-                                 alt="The Groups tab of the FreeBASIC Panel. Group Definitions lists six groups — Engine, Helpers, Player, Interface, Enemy and Legacy — each with a checkbox, a colour square, its symbol counts and the line it lives on in me.userid. Above the list the add form is open with the name Effects, a chosen green colour, an enabled Add button and Cancel. Below it the colour picker is open: a Saturation slider at 50 and a grid of colours.">
-                            <figcaption><strong>Creating a group.</strong> The existing groups, the add
-                                form with its colour swatch, and the colour picker with its Saturation
-                                slider and colour grid. Note the right-hand column: each group already
-                                says which line of <span class="mono">me.userid</span> it lives on.</figcaption>
-                        </figure>
+                            </div>
+
+                            <figure class="shot">
+                                <img src="img/groups.png" width="365" height="718"
+                                     alt="The Groups tab of the FreeBASIC Panel. Group Definitions lists six groups — Engine, Helpers, Player, Interface, Enemy and Legacy — each with a checkbox, a colour square, its symbol counts and the line it lives on in me.userid. Above the list the add form is open with the name Effects, a chosen green colour, an enabled Add button and Cancel. Below it the colour picker is open: a Saturation slider at 50 and a grid of colours.">
+                                <figcaption><strong>Creating a group.</strong> The existing groups, the add
+                                    form with its colour swatch, and the colour picker with its Saturation
+                                    slider and colour grid. Note the right-hand column: each group already
+                                    says which line of <span class="mono">me.userid</span> it lives on.</figcaption>
+                            </figure>
+                        </div>
 
                         <figure class="shot">
                             <img src="img/editor.png" width="1030" height="560"
