@@ -671,6 +671,20 @@ footer {
 
 /* Kuvat paneelissa. .shot on tarkoitettu leveään sisaltoon;
    paneeli on kapeampi, joten marginaalit pois. */
+.browse-panel .browse-pair .shot {
+	margin: 0;
+}
+
+/* Ennen/jalkeen-pari rinnakkain. Kuvat 700 px leveat, joten ne
+   mahtuvat 1:1 jo kapeaan paneeliin (mitattu: paneelin
+   sisaleveys 727 px tassa testiikkunassa). Ilman tata 1030 px
+   versio olisi skaalautunut. */
+.browse-pair {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(700px, 1fr));
+	gap: 1.25rem;
+	margin: 1rem 0 0.5rem;
+}
 .browse-panel .shot {
 	margin: 1.5rem 0 0.5rem;
 }

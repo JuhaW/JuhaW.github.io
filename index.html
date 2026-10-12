@@ -335,6 +335,28 @@ fbc -include generated.bi <span class="string">01_kirjasto.bas</span> <span clas
                             </figure>
                         </div>
 
+                        <h4>What it looks like</h4>
+                        <p>One function, one new group. Before and after, from the same screen — the
+                            panel on the left, the source on the right.</p>
+
+                        <div class="browse-pair">
+                            <figure class="shot">
+                                <img src="img/before.png" width="700" height="470"
+                                     alt="Before. The Groups list on the left shows six groups: Engine, Helpers, Player, Interface, Enemy and Legacy. In the source on the right every function is coloured, except WorldSetup on line 208, whose name is plain white because it belongs to no group.">
+                                <figcaption><strong>Before.</strong> Six groups, and
+                                    <span class="mono">WorldSetup</span> belongs to none of them, so it is
+                                    drawn in plain white while everything around it is coloured.</figcaption>
+                            </figure>
+
+                            <figure class="shot">
+                                <img src="img/after.png" width="700" height="470"
+                                     alt="After. The Groups list now shows seven groups, with a new green group called Effects. On line 208 the name WorldSetup is now drawn in that same green, because it has been put in the new group.">
+                                <figcaption><strong>After.</strong> The new group is in the list, and
+                                    <span class="mono">WorldSetup</span> is drawn in its colour. Nothing
+                                    else on the screen moved.</figcaption>
+                            </figure>
+                        </div>
+
                         <figure class="shot">
                             <img src="img/editor.png" width="1030" height="560"
                                  alt="A FreeBASIC source file in VS Code. Every Type, variable and function declaration is drawn in the colour of the group it belongs to: names in blue, numbers in orange, targets in red, and a note comment on the right of each line. Nothing in the file is styled by hand.">
