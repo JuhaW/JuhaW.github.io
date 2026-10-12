@@ -21,12 +21,31 @@
                 <h1>FreeBASIC Panel</h1>
             </div>
             <nav class="nav-links">
-                <a href="#browse">Features</a>
-                <a href="#groups">Colour groups</a>
-                <a href="#automation">Automation</a>
+                <button type="button" class="nav-link" data-key="groups">Features</button>
+                <button type="button" class="nav-link" data-key="groups">Colour groups</button>
+                <button type="button" class="nav-link" data-key="declare">Automation</button>
             </nav>
         </div>
     </header>
+
+    <!-- ⭐ NAVIGAATIO. Oma elementtinsä, EI minkään näkymän sisällä.
+         Näin se pysyy näkyvissä vaikka jokin näkymä piilotetaan.
+         Yli 1100 px leveydella se on position: fixed (CSS). -->
+    <ul class="browse-list" id="browseList">
+        <li><button type="button" class="browse-item is-active" data-key="main">Main page</button></li>
+        <li><button type="button" class="browse-item" data-key="groups">Colour groups</button></li>
+        <li><button type="button" class="browse-item" data-key="inherit">Inherited groups</button></li>
+        <li><button type="button" class="browse-item" data-key="instances">Instance colours</button></li>
+        <li><button type="button" class="browse-item" data-key="views">The six views</button></li>
+        <li><button type="button" class="browse-item" data-key="scope">Scope filter</button></li>
+        <li><button type="button" class="browse-item" data-key="hover">Hover</button></li>
+        <li><button type="button" class="browse-item" data-key="overload">Overload resolution</button></li>
+        <li><button type="button" class="browse-item" data-key="favourites">Favourites</button></li>
+        <li><button type="button" class="browse-item" data-key="diagnostics">Diagnostics</button></li>
+        <li><button type="button" class="browse-item" data-key="declare">Declarations &amp; build</button></li>
+    </ul>
+
+    <div id="viewMain">
 
     <section class="hero">
         <div class="container hero-grid">
@@ -81,135 +100,7 @@
                 right now.</figcaption>
         </figure>
 
-        <!-- OMINAISUUDET: lista + klikkaus -->
-        <section id="browse" class="section">
-            <div class="section-title">
-                <h2>What it does</h2>
-                <p>Pick one to see it in detail.</p>
-            </div>
-
-            <div class="browse">
-                <ul class="browse-list" id="browseList">
-                    <li><button type="button" class="browse-item is-active" data-key="groups">Colour groups</button></li>
-                    <li><button type="button" class="browse-item" data-key="inherit">Inherited groups</button></li>
-                    <li><button type="button" class="browse-item" data-key="instances">Instance colours</button></li>
-                    <li><button type="button" class="browse-item" data-key="views">The six views</button></li>
-                    <li><button type="button" class="browse-item" data-key="scope">Scope filter</button></li>
-                    <li><button type="button" class="browse-item" data-key="hover">Hover</button></li>
-                    <li><button type="button" class="browse-item" data-key="overload">Overload resolution</button></li>
-                    <li><button type="button" class="browse-item" data-key="favourites">Favourites</button></li>
-                    <li><button type="button" class="browse-item" data-key="diagnostics">Diagnostics</button></li>
-                    <li><button type="button" class="browse-item" data-key="declare">Declarations &amp; build</button></li>
-                </ul>
-
-                <div class="browse-detail" id="browseDetail">
-
-                    <div class="browse-panel" data-key="groups">
-                        <h3>Colour groups</h3>
-                        <p>You name the groups. A symbol belongs to one, the group has one colour, and
-                            that colour follows the symbol into the editor, into its hover card and
-                            into the panel. Assign a symbol once — there is nothing to keep in step
-                            afterwards.</p>
-                        <p class="browse-note">Groups are yours to name: Library, Own code, Interface,
-                            Needs review. Nothing is tied to any part of the language.</p>
-                    </div>
-
-                    <div class="browse-panel" data-key="inherit" hidden>
-                        <h3>Inherited groups</h3>
-                        <p>A group is inherited by everything inside it, so tagging a whole block is
-                            one action rather than hundreds. But any individual symbol can step out and
-                            join a different group — one function inside a library block can move into
-                            your own group without being lifted out of the block it lives in.</p>
-                        <p class="browse-note">A group can be switched off without being deleted. It
-                            stops colouring and leaves the panel, but it is still there.</p>
-                    </div>
-
-                    <div class="browse-panel" data-key="instances" hidden>
-                        <h3>Instance colours</h3>
-                        <p>An instance of a type does not have to follow the type's colour. Put the
-                            instance in its own group and it takes that colour instead — useful when
-                            one variable of a type matters to you and the rest do not.</p>
-                        <p class="browse-note">Nothing disappears if you have not classified it. An
-                            instance with no group takes its type's colour; a type with no group stays
-                            a neutral grey.</p>
-                    </div>
-
-                    <div class="browse-panel" data-key="views" hidden>
-                        <h3>The six views</h3>
-                        <p><strong>Functions</strong> — everything callable, grouped by colour, with
-                            callers and callees per symbol. <strong>Types</strong> — your types and
-                            enums, opened into their instances and members.
-                            <strong>Groups</strong> — where the colour groups are created, renamed,
-                            recoloured, reordered and switched off.
-                            <strong>Files</strong> — the modules in the project and the libraries they
-                            include. <strong>Analysis</strong> — which files carry the work and which
-                            symbols everything leans on. <strong>Settings</strong> — everything
-                            configurable, which is also where the panel opens.</p>
-                    </div>
-
-                    <div class="browse-panel" data-key="scope" hidden>
-                        <h3>Scope filter</h3>
-                        <p>The lists are big, because real projects are. Cut them down to the file you
-                            have open, or to the files actually visible on screen, so the panel answers
-                            "what is here right now" instead of "what exists somewhere".</p>
-                        <p class="browse-note">When a list comes up empty it says why: nothing in this
-                            file, nothing matching your search, nothing in this category. A blank list
-                            with no explanation is worse than no list.</p>
-                    </div>
-
-                    <div class="browse-panel" data-key="hover" hidden>
-                        <h3>Hover</h3>
-                        <p>Hovering a symbol shows what it is, which group it belongs to, and who uses
-                            it. You can move the symbol to a different group straight from the hover
-                            card, without leaving the file you are reading.</p>
-                        <p class="browse-note">Resolving follows scope. If a local variable shadows a
-                            module-level one of the same name, hover, colouring and group changes all
-                            describe the symbol you are actually pointing at.</p>
-                    </div>
-
-                    <div class="browse-panel" data-key="overload" hidden>
-                        <h3>Overload resolution</h3>
-                        <p>When a project uses overloaded functions, the editor works out which one
-                            your call binds to and shows you. Literals, local and module-level
-                            variables, expression results, conversion functions, type aliases and
-                            object member calls are all taken into account.</p>
-                        <p class="browse-note">Without that, the answer would just be the first
-                            definition in the list — which is wrong exactly when the definitions are
-                            in a different order from what you expected.</p>
-                    </div>
-
-                    <div class="browse-panel" data-key="favourites" hidden>
-                        <h3>Favourites</h3>
-                        <p>Mark the functions you keep coming back to. They are starred beside the code
-                            in the editor, so the two or three you actually work with are findable at a
-                            glance in a file you have not opened in months.</p>
-                        <p class="browse-note">The star can sit in the editor gutter, in the overview
-                            ruler beside the scrollbar, in both, or nowhere.</p>
-                    </div>
-
-                    <div class="browse-panel" data-key="diagnostics" hidden>
-                        <h3>Diagnostics</h3>
-                        <p>Unresolved names are reported — but the ones coming from FreeBASIC's own
-                            header libraries are filtered away, and library code is not held against
-                            you. Point the extension at your FreeBASIC installation and the headers
-                            behind your includes are recognised too, so a type name that lives in a
-                            header is not an unknown symbol.</p>
-                        <p class="browse-note">What reaches you is meant to be yours to fix.</p>
-                    </div>
-
-                    <div class="browse-panel" data-key="declare" hidden>
-                        <h3>Declarations &amp; build</h3>
-                        <p>Every module-level function and sub gets a declaration written into a single
-                            file, and the compiler is told to read that file first — so no module ever
-                            calls something the compiler has not been told about, and reordering your
-                            files stops breaking anything.</p>
-                        <p class="browse-note">The same one-line invocation builds the project. Your own
-                            code stays untouched; the generated file lives beside it.</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
+        
 
         <!-- Ongelma vs Ratkaisu -->
         <section id="features" class="section">
@@ -375,6 +266,120 @@ fbc -include generated.bi <span class="string">01_kirjasto.bas</span> <span clas
 
     </main>
 
+    </div><!-- /#viewMain -->
+
+<!-- OMINAISUUSTEN NAYMA. Oma view-sisaruksena #viewMainille, EI sen
+         lapsena: jos se olisi sen sisalla, #viewMain piilotettaessa
+         katoaisi myos tama. Piilotetaan kun listassa on "Main page". -->
+    <div class="browse" id="viewFeature">
+        <div class="browse-detail" id="browseDetail">
+
+                    <div class="browse-panel" data-key="groups">
+                        <h3>Colour groups</h3>
+                        <p>You name the groups. A symbol belongs to one, the group has one colour, and
+                            that colour follows the symbol into the editor, into its hover card and
+                            into the panel. Assign a symbol once — there is nothing to keep in step
+                            afterwards.</p>
+                        <p class="browse-note">Groups are yours to name: Library, Own code, Interface,
+                            Needs review. Nothing is tied to any part of the language.</p>
+                    </div>
+
+                    <div class="browse-panel" data-key="inherit" hidden>
+                        <h3>Inherited groups</h3>
+                        <p>A group is inherited by everything inside it, so tagging a whole block is
+                            one action rather than hundreds. But any individual symbol can step out and
+                            join a different group — one function inside a library block can move into
+                            your own group without being lifted out of the block it lives in.</p>
+                        <p class="browse-note">A group can be switched off without being deleted. It
+                            stops colouring and leaves the panel, but it is still there.</p>
+                    </div>
+
+                    <div class="browse-panel" data-key="instances" hidden>
+                        <h3>Instance colours</h3>
+                        <p>An instance of a type does not have to follow the type's colour. Put the
+                            instance in its own group and it takes that colour instead — useful when
+                            one variable of a type matters to you and the rest do not.</p>
+                        <p class="browse-note">Nothing disappears if you have not classified it. An
+                            instance with no group takes its type's colour; a type with no group stays
+                            a neutral grey.</p>
+                    </div>
+
+                    <div class="browse-panel" data-key="views" hidden>
+                        <h3>The six views</h3>
+                        <p><strong>Functions</strong> — everything callable, grouped by colour, with
+                            callers and callees per symbol. <strong>Types</strong> — your types and
+                            enums, opened into their instances and members.
+                            <strong>Groups</strong> — where the colour groups are created, renamed,
+                            recoloured, reordered and switched off.
+                            <strong>Files</strong> — the modules in the project and the libraries they
+                            include. <strong>Analysis</strong> — which files carry the work and which
+                            symbols everything leans on. <strong>Settings</strong> — everything
+                            configurable, which is also where the panel opens.</p>
+                    </div>
+
+                    <div class="browse-panel" data-key="scope" hidden>
+                        <h3>Scope filter</h3>
+                        <p>The lists are big, because real projects are. Cut them down to the file you
+                            have open, or to the files actually visible on screen, so the panel answers
+                            "what is here right now" instead of "what exists somewhere".</p>
+                        <p class="browse-note">When a list comes up empty it says why: nothing in this
+                            file, nothing matching your search, nothing in this category. A blank list
+                            with no explanation is worse than no list.</p>
+                    </div>
+
+                    <div class="browse-panel" data-key="hover" hidden>
+                        <h3>Hover</h3>
+                        <p>Hovering a symbol shows what it is, which group it belongs to, and who uses
+                            it. You can move the symbol to a different group straight from the hover
+                            card, without leaving the file you are reading.</p>
+                        <p class="browse-note">Resolving follows scope. If a local variable shadows a
+                            module-level one of the same name, hover, colouring and group changes all
+                            describe the symbol you are actually pointing at.</p>
+                    </div>
+
+                    <div class="browse-panel" data-key="overload" hidden>
+                        <h3>Overload resolution</h3>
+                        <p>When a project uses overloaded functions, the editor works out which one
+                            your call binds to and shows you. Literals, local and module-level
+                            variables, expression results, conversion functions, type aliases and
+                            object member calls are all taken into account.</p>
+                        <p class="browse-note">Without that, the answer would just be the first
+                            definition in the list — which is wrong exactly when the definitions are
+                            in a different order from what you expected.</p>
+                    </div>
+
+                    <div class="browse-panel" data-key="favourites" hidden>
+                        <h3>Favourites</h3>
+                        <p>Mark the functions you keep coming back to. They are starred beside the code
+                            in the editor, so the two or three you actually work with are findable at a
+                            glance in a file you have not opened in months.</p>
+                        <p class="browse-note">The star can sit in the editor gutter, in the overview
+                            ruler beside the scrollbar, in both, or nowhere.</p>
+                    </div>
+
+                    <div class="browse-panel" data-key="diagnostics" hidden>
+                        <h3>Diagnostics</h3>
+                        <p>Unresolved names are reported — but the ones coming from FreeBASIC's own
+                            header libraries are filtered away, and library code is not held against
+                            you. Point the extension at your FreeBASIC installation and the headers
+                            behind your includes are recognised too, so a type name that lives in a
+                            header is not an unknown symbol.</p>
+                        <p class="browse-note">What reaches you is meant to be yours to fix.</p>
+                    </div>
+
+                    <div class="browse-panel" data-key="declare" hidden>
+                        <h3>Declarations &amp; build</h3>
+                        <p>Every module-level function and sub gets a declaration written into a single
+                            file, and the compiler is told to read that file first — so no module ever
+                            calls something the compiler has not been told about, and reordering your
+                            files stops breaking anything.</p>
+                        <p class="browse-note">The same one-line invocation builds the project. Your own
+                            code stays untouched; the generated file lives beside it.</p>
+                    </div><!-- /.browse-panel -->
+
+        </div><!-- /#browseDetail -->
+    </div><!-- /#viewFeature -->
+
     <footer>
         <div class="container footer-content">
             <p>&copy; FreeBASIC Panel &middot; Built for FreeBASIC projects in VS Code.</p>
@@ -390,7 +395,9 @@ fbc -include generated.bi <span class="string">01_kirjasto.bas</span> <span clas
         (function () {
             var list = document.getElementById('browseList');
             var detail = document.getElementById('browseDetail');
-            if (!list || !detail) return;
+            var viewMain = document.getElementById('viewMain');
+            var viewFeature = document.getElementById('viewFeature');
+            if (!list || !detail || !viewMain || !viewFeature) return;
             var buttons = Array.prototype.slice.call(list.querySelectorAll('.browse-item'));
             var panels = Array.prototype.slice.call(detail.querySelectorAll('.browse-panel'));
 
@@ -398,20 +405,31 @@ fbc -include generated.bi <span class="string">01_kirjasto.bas</span> <span clas
                 buttons.forEach(function (b) {
                     b.classList.toggle('is-active', b.dataset.key === key);
                 });
+                // "main" = paasivu naykyy, ominaisuusnaytys piilossa.
+                var isMain = key === 'main';
+                viewMain.hidden = !isMain;
+                viewFeature.hidden = isMain;
                 panels.forEach(function (p) {
                     p.hidden = p.dataset.key !== key;
                 });
+                if (!isMain) {
+                    window.scrollTo(0, 0);
+                }
             }
 
-            buttons.forEach(function (b) {
+            // Samat napit ohjaavat listaa JA ylin headerin linkit: molemmat
+            // kutsuvat show(), joten kohde ei koskaan riippu siita kumpaa
+            // niistä käyttäjä painaa.
+            buttons.concat(Array.prototype.slice.call(
+                document.querySelectorAll('.nav-link'))).forEach(function (b) {
                 b.addEventListener('click', function () { show(b.dataset.key); });
             });
 
-            // Osoiterivin #avain valitsee saman ominaisuuden, ja lista
-            // toimii ilman JavaScriptiä ainakin linkkina.
+            // Osoiterivi #avain valitsee saman ominaisuuden.
+            // Jos sitä ei ole, näytetään pääsivu.
             function fromHash() {
                 var m = /^#browse-([a-z]+)$/.exec(location.hash);
-                if (m) show(m[1]);
+                show(m ? m[1] : 'main');
             }
             window.addEventListener('hashchange', fromHash);
             fromHash();
