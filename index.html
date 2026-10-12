@@ -287,6 +287,14 @@ fbc -include generated.bi <span class="string">01_kirjasto.bas</span> <span clas
         <div class="browse-detail" id="browseDetail">
 
                     <div class="browse-panel" data-key="groups">
+                        <!-- ⭐ KUVA ALKAA SAMASTA KORKEUDELTA KUI TEKSTI. Siksi
+                             myös otsikko ja johdanto ovat tekstisarakkeessa:
+                             jos ne jaisivat gridin ulkopuolelle, kuva alkaisi
+                             vasta "Creating a group" -otsikosta asti ja
+                             seisoisi 218 px alempana. -->
+                        <div class="browse-split">
+                            <div class="browse-split-text">
+
                         <h3>Colour groups</h3>
                         <p>You name the groups. A symbol belongs to one, the group has one colour, and
                             that colour follows the symbol into the editor, into its hover card and
@@ -294,9 +302,6 @@ fbc -include generated.bi <span class="string">01_kirjasto.bas</span> <span clas
                             afterwards.</p>
                         <p class="browse-note">Groups are yours to name: Library, Own code, Interface,
                             Needs review. Nothing is tied to any part of the language.</p>
-
-                        <div class="browse-split">
-                            <div class="browse-split-text">
 
                         <h4>Creating a group</h4>
                         <ol class="browse-steps">

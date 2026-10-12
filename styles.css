@@ -675,6 +675,13 @@ footer {
 	margin: 1.5rem 0 0.5rem;
 }
 
+/* ⭐ .browse-splitissä olevan kuvan yläreuna ON tekstin yläreuna.
+   Ylämarginaali (24 px) siirtaisi kuvan sen alapuolelle, jolloin
+   ne eivät olisi samalla korkeudella. Siksi nollataan. */
+.browse-split .shot {
+	margin-top: 0;
+}
+
 .browse-panel .shot img {
 	box-shadow: none;
 }
