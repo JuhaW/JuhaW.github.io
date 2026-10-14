@@ -21,40 +21,59 @@
                 <h1>FreeBASIC Panel</h1>
             </div>
             <nav class="nav-links">
-                <button type="button" class="nav-link" data-key="groups">Features</button>
+                <button type="button" class="nav-link" data-key="features">Features</button>
                 <button type="button" class="nav-link" data-key="groups">Colour groups</button>
                 <button type="button" class="nav-link" data-key="declare">Automation</button>
             </nav>
         </div>
     </header>
 
-    <!-- ⭐ NAVIGAATIO. Oma elementtinsä, EI minkään näkymän sisällä.
-         Näin se pysyy näkyvissä vaikka jokin näkymä piilotetaan.
-         Yli 1100 px leveydella se on position: fixed (CSS).
+    <!-- Navigation lives in its own element, not inside any view, so it
+         stays visible even when a view is hidden. Above 1100 px it is
+         position: fixed via CSS.         Groups are not decoration: each group is one step in the reader's
+         journey through the extension: introduction, getting started,
+         organising, moving around, building, working together, tuning. -->
+    <ul class="browse-list" id="browseList" role="tablist">
+        <li class="browse-group" role="presentation"><span>Introduction</span></li>
+        <li><button type="button" class="browse-item is-active" data-key="main" role="tab" aria-selected="true">Main page</button></li>
+        <li><button type="button" class="browse-item" data-key="features" role="tab" aria-selected="false">What you can do with it</button></li>
 
-         Ryhmät eivät ole koriste: jokainen ryhmä on ne ominaisuudet
-         jotka liittyvät samaan työhön. Paneelien sisältöä luettua
-         ryhmät: värit / lista / editori / kääntäminen. -->
-    <ul class="browse-list" id="browseList">
-        <li><button type="button" class="browse-item is-active" data-key="main">Main page</button></li>
+        <li class="browse-group" role="presentation"><span>1. Getting started</span></li>
+        <li><button type="button" class="browse-item" data-key="opening" role="tab" aria-selected="false">Opening a project</button></li>
+        <li><button type="button" class="browse-item" data-key="panelsees" role="tab" aria-selected="false">What the panel sees</button></li>
 
-        <li class="browse-group" role="presentation"><span>Colouring</span></li>
-        <li><button type="button" class="browse-item" data-key="groups">Colour groups</button></li>
-        <li><button type="button" class="browse-item" data-key="inherit">Inherited groups</button></li>
-        <li><button type="button" class="browse-item" data-key="instances">Instance colours</button></li>
+        <li class="browse-group" role="presentation"><span>2. Organising your code</span></li>
+        <li><button type="button" class="browse-item" data-key="groups" role="tab" aria-selected="false">Colour groups</button></li>
+        <li><button type="button" class="browse-item" data-key="creategroup" role="tab" aria-selected="false">Creating a group</button></li>
+        <li><button type="button" class="browse-item" data-key="chooscolour" role="tab" aria-selected="false">Choosing the colour</button></li>
+        <li><button type="button" class="browse-item" data-key="members" role="tab" aria-selected="false">Functions in a group</button></li>
+        <li><button type="button" class="browse-item" data-key="inherit" role="tab" aria-selected="false">Inherited groups</button></li>
+        <li><button type="button" class="browse-item" data-key="instances" role="tab" aria-selected="false">Instance colours</button></li>
+        <li><button type="button" class="browse-item" data-key="favourites" role="tab" aria-selected="false">Favourites</button></li>
 
-        <li class="browse-group" role="presentation"><span>Finding your way</span></li>
-        <li><button type="button" class="browse-item" data-key="views">The six views</button></li>
-        <li><button type="button" class="browse-item" data-key="scope">Scope filter</button></li>
-        <li><button type="button" class="browse-item" data-key="favourites">Favourites</button></li>
+        <li class="browse-group" role="presentation"><span>3. Moving around the code</span></li>
+        <li><button type="button" class="browse-item" data-key="views" role="tab" aria-selected="false">The six views</button></li>
+        <li><button type="button" class="browse-item" data-key="typesview" role="tab" aria-selected="false">The Types view</button></li>
+        <li><button type="button" class="browse-item" data-key="scope" role="tab" aria-selected="false">Scope filter</button></li>
+        <li><button type="button" class="browse-item" data-key="searchbox" role="tab" aria-selected="false">Search</button></li>
+        <li><button type="button" class="browse-item" data-key="catfilter" role="tab" aria-selected="false">Category filters</button></li>
+        <li><button type="button" class="browse-item" data-key="emptylists" role="tab" aria-selected="false">Empty lists</button></li>
+        <li><button type="button" class="browse-item" data-key="hover" role="tab" aria-selected="false">Hover</button></li>
+        <li><button type="button" class="browse-item" data-key="codelens" role="tab" aria-selected="false">CodeLens</button></li>
+        <li><button type="button" class="browse-item" data-key="overload" role="tab" aria-selected="false">Overload resolution</button></li>
+        <li><button type="button" class="browse-item" data-key="diagnostics" role="tab" aria-selected="false">Diagnostics</button></li>
 
-        <li class="browse-group" role="presentation"><span>In the editor</span></li>
-        <li><button type="button" class="browse-item" data-key="hover">Hover</button></li>
-        <li><button type="button" class="browse-item" data-key="overload">Overload resolution</button></li>
-        <li><button type="button" class="browse-item" data-key="diagnostics">Diagnostics</button></li>
+        <li class="browse-group" role="presentation"><span>4. Building</span></li>
+        <li><button type="button" class="browse-item" data-key="declare" role="tab" aria-selected="false">Declarations &amp; build</button></li>
+        <li><button type="button" class="browse-item" data-key="filestab" role="tab" aria-selected="false">The Files tab</button></li>
+        <li><button type="button" class="browse-item" data-key="automation" role="tab" aria-selected="false">Automation</button></li>
+        <li><button type="button" class="browse-item" data-key="buildstatus" role="tab" aria-selected="false">Build status</button></li>
 
-        <li class="browse-group" role="presentation"><span>Building</span></li>
-        <li><button type="button" class="browse-item" data-key="declare">Declarations &amp; build</button></li>
+        <li class="browse-group" role="presentation"><span>5. Working with others</span></li>
+        <li><button type="button" class="browse-item" data-key="multiuser" role="tab" aria-selected="false">Multi-user</button></li>
+
+        <li class="browse-group" role="presentation"><span>6. Tuning</span></li>
+        <li><button type="button" class="browse-item" data-key="settingsview" role="tab" aria-selected="false">Settings</button></li>
     </ul>
 
     <div id="viewMain">
@@ -66,27 +85,14 @@
                 <h2>Take control of your FreeBASIC project</h2>
                 <p class="hero-lead">
                     FreeBASIC Panel brings the automation and clarity of a modern development
-                    environment straight into VS Code. It removes the two things that eat your
-                    time in multi-module FreeBASIC projects: copy-pasted <code>Declare</code>
-                    lines that never stay in sync, and library includes you have to keep guessing at.
+                    environment straight into VS Code. You put functions into groups by your own
+                    semantics, and every name and call site is drawn in that group's colour. It
+                    also removes the chore that eats your time in multi-module FreeBASIC
+                    projects: copy-pasted <code>Declare</code> lines that never stay in sync.
                 </p>
                 <div class="hero-cta">
                     <a href="https://github.com/JuhaW/Vscode_Extension_Freebasic_LSP" class="btn btn-primary">Get it from GitHub</a>
-                    <a href="#features" class="btn btn-secondary">See what it does</a>
-                </div>
-            </div>
-            <div class="hero-card-preview">
-                <div class="code-preview-box">
-                    <div class="window-header">
-                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                        <span class="window-title">generated.bi (written for you)</span>
-                    </div>
-                    <pre><code><span class="comment">' Declare lines only — no bodies</span>
-<span class="comment">' and no variable definitions</span>
-
-<span class="keyword">Declare Sub</span> subway(<span class="keyword">ByVal</span> handle <span class="type">As ULong</span>)
-<span class="keyword">Declare Function</span> ApuSumma(n <span class="type">As Integer</span>) <span class="type">As Integer</span>
-<span class="keyword">Declare Sub</span> ApuKirjaa(teksti <span class="type">As String</span>)</code></pre>
+                    <a href="#browse-features" class="btn btn-secondary">See what it does</a>
                 </div>
             </div>
         </div>
@@ -95,7 +101,7 @@
     <main class="container">
 
         <figure class="shot">
-            <img src="img/window.png" width="1030" height="974"
+            <img src="img/window.png" width="1030" height="974" loading="lazy"
                  alt="VS Code with the FreeBASIC Panel sidebar open on the left, showing functions grouped by colour, and the editor on the right where each function carries its group's colour.">
             <figcaption>The whole thing in one window: <strong>the panel</strong> lists what the
                 project contains, grouped by colour; <strong>the editor</strong> shows those same
@@ -104,7 +110,7 @@
         </figure>
 
         <figure class="shot">
-            <img src="img/panel.png" width="365" height="908"
+            <img src="img/panel.png" width="365" height="908" loading="lazy"
                  alt="The FreeBASIC LSP sidebar: six tabs, a Favourites section, a search box, a scope filter showing visible files, and functions listed under the colour groups Enemy, Engine, Helpers, Interface and Player.">
             <figcaption><strong>The panel.</strong> Six views of the project, with everything grouped by
                 colour. The list can be cut down to what is visible on screen —
@@ -112,10 +118,8 @@
                 right now.</figcaption>
         </figure>
 
-        
-
-        <!-- Ongelma vs Ratkaisu -->
-        <section id="features" class="section">
+        <!-- Problem vs Solution -->
+        <section class="section">
             <div class="section-title">
                 <h2>What problems does this solve?</h2>
                 <p>Growing FreeBASIC projects hit the same handful of walls over and over.</p>
@@ -158,30 +162,30 @@
             </div>
         </section>
 
-        <!-- VÄRIRYHMÄT -->
-        <section id="groups" class="section">
+        <!-- Colour groups -->
+        <section class="section">
             <div class="section-title">
                 <h2>Colour groups</h2>
                 <p>Most editors give a file one keyword colour. This one lets you invent your own.</p>
+                <p style="margin-top: 1rem;">That is the whole point: you tell the panel which parts
+                    of the project matter to you, and those are the parts that get a colour. Not the
+                    other way round — a syntax highlighter paints every keyword the language defines,
+                    which says nothing about your project. Which code is yours, which came from a
+                    library, what is finished and what is still open: that is the thing worth
+                    colouring.</p>
+                <p style="margin-top: 1rem;">And the grouping is yours to define: if five functions
+                    belong together in your project — by whatever logic matters to you — put them in
+                    one group and their names, along with every place you call them, are drawn in
+                    that group's colour. That is semantics you defined yourself; the language knows
+                    nothing about it.</p>
             </div>
-
-            <figure class="shot">
-                <img src="img/editor.png" width="1030" height="560"
-                     alt="The editor. Six module-level variables: the type Vec2 is blue, but gPlayerPos is orange and gTargetPos and gSpawnPoint are red — same type, different groups. Function names below are coloured by their own group.">
-                <figcaption>Every symbol carries its group as a tag beside it — here
-                    <strong>'@a.Player.me</strong> in orange, <strong>'@a.Enemy.me</strong> in red,
-                    <strong>'@a.Engine.me</strong> in blue. Note the two <code>Vec2</code> variables
-                    near the top: both are the same type, and both are a different colour from it.
-                    The tag is how a group survives a rename, a move between files, and a colleague
-                    opening the same code.</figcaption>
-            </figure>
 
             <div class="workflow-grid" style="margin-top: 2.5rem;">
                 <div class="workflow-step">
                     <div class="step-number">01</div>
                     <h3>Make a group</h3>
                     <p>Give it a name and pick a colour from the picker. Call them whatever fits your
-                        project — Library, Own code, Interface, Needs review. Turn one off whenever you
+                        project — Library, Own_code, Interface, Needs_review. Turn one off whenever you
                         want; it keeps its place and its members.</p>
                 </div>
                 <div class="workflow-step">
@@ -204,16 +208,17 @@
                 <div class="card">
                     <div class="card-icon">◐</div>
                     <h3>An instance can differ from its type</h3>
-                    <p>An instance of a type does not have to follow the type's colour. Put the instance
-                        in its own group and it takes that colour instead — useful when one variable of
-                        a type matters to you and the rest do not.</p>
+                    <p>An instance of a type or an enum does not have to follow the colour of the group
+                        its type is in. Put the instance in its own group and it takes that colour instead
+                        — useful when one variable of a type matters to you and the rest do not.</p>
                 </div>
                 <div class="card">
                     <div class="card-icon">◑</div>
                     <h3>Fall back, do not blank out</h3>
-                    <p>An instance with no group of its own takes its type's colour, and a type with no
-                        group stays a neutral grey. So nothing ever disappears just because you have not
-                        classified it yet.</p>
+                    <p>An instance with no group of its own takes the colour of the group its type is
+                        in. If the type is in no group either, the type and its ungrouped instances
+                        are drawn in the editor's normal text colour. So nothing ever disappears just
+                        because you have not classified it yet.</p>
                 </div>
                 <div class="card highlight-card">
                     <div class="card-icon">◇</div>
@@ -225,8 +230,8 @@
             </div>
         </section>
 
-        <!-- Miten se toimii käytännössä -->
-        <section id="how-it-works" class="section">
+        <!-- How it works in practice -->
+        <section class="section">
             <div class="section-title">
                 <h2>How it takes the work off your plate</h2>
                 <p>What the tool does in the background, while you get on with the actual code.</p>
@@ -251,8 +256,8 @@
             </div>
         </section>
 
-        <!-- Koodiesimerkki -->
-        <section id="automation" class="section code-showcase">
+        <!-- Code example -->
+        <section class="section code-showcase">
             <div class="section-title">
                 <h2>What the files look like</h2>
                 <p>Your own code stays untouched. The generated file lives beside it.</p>
@@ -262,7 +267,7 @@
                 <div class="code-box">
                     <h4>Your module — includes stay here</h4>
                     <pre><code><span class="comment">' Includes belong in your code</span>
-<span class="keyword">#include_once</span> <span class="string">"bass.bi"</span>
+<span class="keyword">#include once</span> <span class="string">"bass.bi"</span>
 
 <span class="comment">' No declarations needed</span>
 subway(100)
@@ -280,30 +285,115 @@ fbc -include generated.bi <span class="string">01_kirjasto.bas</span> <span clas
 
     </div><!-- /#viewMain -->
 
-<!-- OMINAISUUSTEN NAYMA. Oma view-sisaruksena #viewMainille, EI sen
-         lapsena: jos se olisi sen sisalla, #viewMain piilotettaessa
-         katoaisi myos tama. Piilotetaan kun listassa on "Main page". -->
+<!-- Feature view. Sibling to #viewMain, NOT inside it:
+         if it were a child, hiding #viewMain would hide this too.
+         Hidden when the list shows "Main page". -->
     <div class="browse" id="viewFeature">
         <div class="browse-detail" id="browseDetail">
 
-                    <div class="browse-panel" data-key="groups">
-                        <!-- ⭐ KUVA ALKAA SAMASTA KORKEUDELTA KUI TEKSTI. Siksi
-                             myös otsikko ja johdanto ovat tekstisarakkeessa:
-                             jos ne jaisivat gridin ulkopuolelle, kuva alkaisi
-                             vasta "Creating a group" -otsikosta asti ja
-                             seisoisi 218 px alempana. -->
-                        <div class="browse-split">
-                            <div class="browse-split-text">
+                    <div class="browse-panel" data-key="features" hidden>
+                        <h3>What you can do with it</h3>
 
+                        <h4>Build &amp; automation</h4>
+                        <ul class="feature-list">
+                            <li><strong>Never write a <code>Declare</code> line again.</strong> Every
+                                module-level function and sub is declared for you, in one file.</li>
+                            <li><strong>Stop caring about file order.</strong> Every module sees every
+                                other module's signatures, so moving a file cannot break a call.</li>
+                            <li><strong>Build the whole project in one command.</strong> Every checked
+                                module goes to the compiler in a single invocation.</li>
+                            <li><strong>Choose what gets built, and in what order.</strong> The Files tab
+                                ticks modules in and out and orders them by dragging.</li>
+                        </ul>
+
+                        <h4>Colour &amp; organisation</h4>
+                        <ul class="feature-list">
+                            <li><strong>Colour the project your way.</strong> Invent groups and put
+                                symbols in them; the colour follows the symbol into the editor, the panel
+                                and the hover card.</li>
+                            <li><strong>Colour one instance differently.</strong> An instance can have a
+                                group of its own instead of following its type.</li>
+                            <li><strong>Tag a type once.</strong> Its instances inherit the group, and
+                                the Types view marks them as inherited rather than owned.</li>
+                            <li><strong>Keep a group through a rename.</strong> A group is a tag in an
+                                ordinary comment, so it survives renames, moves between files and a
+                                colleague opening the same code.</li>
+                            <li><strong>Give library code its own colour.</strong> Includes are listed,
+                                and the headers behind them are recognised once you point the panel at
+                                your FreeBASIC installation.</li>
+                        </ul>
+
+                        <h4>Views &amp; navigation</h4>
+                        <ul class="feature-list">
+                            <li><strong>See the project in six views.</strong> Functions, Types, Groups,
+                                Files, Analysis and Settings, each grouped by colour.</li>
+                            <li><strong>Find what uses what.</strong> Callers and callees for a symbol,
+                                and where a type is instantiated.</li>
+                            <li><strong>Cut a list down to what is on screen.</strong> The scope filter
+                                answers "what is here right now" instead of "what exists somewhere".</li>
+                            <li><strong>Add things to Favourites.</strong> They get a section of
+                                their own in the Functions tab, and a star beside the code — in the
+                                gutter, in the overview ruler, in both, or nowhere.</li>
+                        </ul>
+
+                        <h4>Code intelligence</h4>
+                        <ul class="feature-list">
+                            <li><strong>Read a symbol without leaving the file.</strong> Hover shows what
+                                it is, which group it is in, and who uses it.</li>
+                            <li><strong>Move a symbol to another group from the hover card.</strong></li>
+                            <li><strong>Know which overload your call binds to.</strong></li>
+                            <li><strong>See callers above every function — a CodeLens.</strong> Each
+                                caller's name is a clickable link that jumps straight to the call site.
+                                The group name is clickable too — it opens the Functions tab focused on
+                                that symbol.</li>
+                            <li><strong>Be told about unresolved names — but not about the
+                                library's.</strong> Header libraries are filtered away, and library code
+                                is not held against you.</li>
+                        </ul>
+                    </div><!-- /.browse-panel -->
+
+                    <div class="browse-panel" data-key="opening" hidden>
+                        <h3>Opening a project</h3>
+                        <p>Open a FreeBASIC project in VS Code and the panel is there — no setup files,
+                            no user name of its own, nothing to configure first.</p>
+                        <p>The first time you open a project, a file for your groups and favourites is
+                            created for you silently, so the panel is usable the moment the project
+                            opens.</p>
+                        <p class="browse-note">Your own code stays untouched: the panel reads your files
+                            where they are and writes only its own user file beside them.</p>
+                    </div>
+
+                    <div class="browse-panel" data-key="panelsees" hidden>
+                        <h3>What the panel sees</h3>
+                        <p>The panel lists what the project contains, grouped by colour: functions, subs,
+                            macros, types and enums, the modules they live in, and the libraries those
+                            modules include.</p>
+                        <p>The include lines are listed in the Files view, so you can see at a glance what
+                            your project pulls in — and once you point the panel at your FreeBASIC
+                            installation, the headers behind those includes are recognised too.</p>
+                        <p>The panel and the editor come from the same analysis, so they cannot disagree.
+                            The scope filter cuts a list down to the files actually visible on screen —
+                            <span class="mono">(27/28)</span> is how much of the project is in view right
+                            now.</p>
+                    </div>
+
+                    <div class="browse-panel" data-key="groups" hidden>
                         <h3>Colour groups</h3>
                         <p>You name the groups. A symbol belongs to one, the group has one colour, and
                             that colour follows the symbol into the editor, into its hover card and
                             into the panel. Assign a symbol once — there is nothing to keep in step
                             afterwards.</p>
-                        <p class="browse-note">Groups are yours to name: Library, Own code, Interface,
-                            Needs review. Nothing is tied to any part of the language.</p>
+                        <p class="browse-note">Groups are yours to name: Library, Own_code, Interface,
+                            Needs_review. Names take letters, digits and underscores — a space is not
+                            allowed. Nothing is tied to any part of the language.</p>
 
-                        <h4>Creating a group</h4>
+                    </div>
+
+                    <div class="browse-panel" data-key="creategroup" hidden>
+                        <div class="browse-split">
+                            <div class="browse-split-text">
+
+                        <h3>Creating a group</h3>
                         <ol class="browse-steps">
                             <li>Open the <strong>Groups</strong> tab in the panel.</li>
                             <li>Press the <strong>+</strong> button. A form opens with a name field, a
@@ -317,16 +407,10 @@ fbc -include generated.bi <span class="string">01_kirjasto.bas</span> <span clas
                                 form says so and refuses — you never end up with two groups of one name.</li>
                         </ol>
 
-                        <h4>Choosing the colour</h4>
-                        <p>The picker works in HSL: the slider sets how strong the colour is, the grid sets
-                            the hue and how light it is. Move the slider and the whole grid redraws, so you
-                            can walk from muted to vivid without leaving the picker. To change a group that
-                            already exists, click its colour square in the list — the same picker opens.</p>
-
                             </div>
 
                             <figure class="shot">
-                                <img src="img/groups.png" width="365" height="718"
+                                <img src="img/groups.png" width="365" height="718" loading="lazy"
                                      alt="The Groups tab of the FreeBASIC Panel. Group Definitions lists six groups — Engine, Helpers, Player, Interface, Enemy and Legacy — each with a checkbox, a colour square, its symbol counts and a right-hand column. Above the list the add form is open with the name Effects, a chosen green colour, an enabled Add button and Cancel. Below it the colour picker is open: a Saturation slider at 50 and a grid of colours.">
                                 <figcaption><strong>Creating a group.</strong> The existing groups, the add
                                     form with its colour swatch, and the colour picker with its Saturation
@@ -334,48 +418,188 @@ fbc -include generated.bi <span class="string">01_kirjasto.bas</span> <span clas
                                     and a square to change its colour.</figcaption>
                             </figure>
                         </div>
+                    </div>
 
-                        <h4>What it looks like</h4>
-                        <p>One function, one new group. The same screen twice — the panel on the left,
-                            the source on the right.</p>
+                    <div class="browse-panel" data-key="chooscolour" hidden>
+                        <h3>Choosing the colour</h3>
+                        <p>The picker works in HSL: the slider sets how strong the colour is, the grid sets
+                            the hue and how light it is. Move the slider and the whole grid redraws, so you
+                            can walk from muted to vivid without leaving the picker. To change a group that
+                            already exists, click its colour square in the list — the same picker opens.</p>
+                    </div>
 
-                        <figure class="shot">
-                            <img src="img/before-after.png" width="775" height="346"
-                                 alt="The same screen shown twice, one above the other. In the upper half the Groups list holds six groups, and the function WorldSetup on line 208 is drawn in plain white because it belongs to none of them. In the lower half the list holds seven groups — a new green group called Effects — and WorldSetup is drawn in that same green. Nothing else on the screen has changed.">
-                            <figcaption><strong>Before on top, after underneath.</strong> Above,
-                                <span class="mono">WorldSetup</span> belongs to no group, so it is drawn in
-                                plain white. Below, the new group is in the list and
-                                <span class="mono">WorldSetup</span> is drawn in its colour. Nothing else on
-                                the screen moved.</figcaption>
-                        </figure>
+                    <div class="browse-panel" data-key="members" hidden>
+                        <h3>Functions in a group</h3>
+                        <p>What a group's functions and subs look like — in the panel and in the
+                            editor, which are two views of the same analysis and therefore cannot
+                            disagree.</p>
 
-                        <figure class="shot">
-                            <img src="img/editor.png" width="1030" height="560"
-                                 alt="A FreeBASIC source file in VS Code. Every Type, variable and function declaration is drawn in the colour of the group it belongs to: names in blue, numbers in orange, targets in red, and a note comment on the right of each line. Nothing in the file is styled by hand.">
-                            <figcaption><strong>The result in the editor.</strong> Every declaration is
-                                drawn in the colour of the group it belongs to. Nothing is imported and
-                                nothing is declared for this to happen.</figcaption>
-                        </figure>
+                        <h4>In the panel</h4>
+                        <p>Each group is a row of its own: the <strong>colour dot</strong>, the name,
+                            and the symbol counts — <span class="mono">F:</span> functions,
+                            <span class="mono">S:</span> subs, <span class="mono">M:</span> macros,
+                            <span class="mono">T:</span> types, <span class="mono">E:</span> enums.
+                            A <span class="mono">Not used</span> badge marks a group no code refers to
+                            yet, and a checkbox switches its colour off without touching its members.</p>
+                        <p>Under the group header, its functions and subs as rows — each name drawn
+                            in the group's colour, each row expandable into
+                            <strong>Callers from N places</strong> and the functions it calls, every
+                            one of those in its <em>own</em> group's colour. Clicking a caller jumps
+                            straight to that call site.</p>
+                        <p><strong>A ball in the left margin</strong> shows where the definition
+                            lives: a <em>bright</em> ball means it is in the active editor — the one
+                            you are editing — and a <em>dim grey</em> ball means it is in any of the
+                            other visible editors, the ones actually shown on screen. A file merely
+                            open in a background tab gets no ball, and no ball means the definition
+                            is in none of the visible editors. The Types tab uses the same
+                            marker.</p>
+                        <div class="fm-editors">
+                            <div class="fm-ed is-active">
+                                <div class="fm-ed-tab">engine.bas<span class="fm-ed-role"> — the one you are editing</span></div>
+                                <div class="fm-ed-code">Sub <span style="color:#49a0df">WorldSetup</span>()  <span class="comment">'@a.Engine.me</span>
+End Sub
+Sub <span style="color:#49a0df">LoadLevel</span>()   <span class="comment">'@a.Engine.me</span>
+End Sub</div>
+                            </div>
+                            <div class="fm-ed">
+                                <div class="fm-ed-tab">enemies.bas<span class="fm-ed-role"> — visible beside it</span></div>
+                                <div class="fm-ed-code">Sub <span style="color:#49a0df">SpawnEnemy</span>()  <span class="comment">'@a.Engine.me</span>
+End Sub</div>
+                            </div>
+                        </div>
+                        <div class="browse-funcmock">
+                            <div class="fm-group"><span class="fm-colour" style="background:#49a0df"></span>Engine
+                                <span class="fm-counts">F: 3</span></div>
+                            <div class="fm-row"><span class="fm-ball is-active"></span><span
+                                    style="color:#49a0df">WorldSetup</span></div>
+                            <div class="fm-row"><span class="fm-ball is-active"></span><span
+                                    style="color:#49a0df">LoadLevel</span></div>
+                            <div class="fm-row"><span class="fm-ball is-visible"></span><span
+                                    style="color:#49a0df">SpawnEnemy</span></div>
+                        </div>
+                        <p class="browse-note">All three functions belong to the Engine group, so
+                            every name is blue. The ball answers a different question: where the
+                            definition lives. The two defined in the active editor get the bright
+                            ball; the one in the visible-but-not-active editor gets the dim grey
+                            one. A file only open in a background tab would get no ball at all, and
+                            in <em>active file only</em> mode the dim row would be filtered out
+                            entirely. Together the two marks tell you both who owns the name and
+                            whether it is on screen right now.</p>
+                        <ul class="feature-list">
+                            <li><strong>A ⭐</strong> marks a favourite.</li>
+                            <li><strong>Right-click</strong> → add to Favourites or move to another
+                                group; <span class="mono">Ctrl+Click</span> selects many rows for a
+                                batch move.</li>
+                            <li><strong>Drag a group</strong> to reorder; the order is kept between
+                                sessions, enabled groups sort first, and                                    <em>Ungrouped</em> is always at the bottom. While you search, empty
+                                    groups drop out of the list.</li>
+                        </ul>
+                        <p class="browse-note">Functions you have not put in any group are not lost:
+                            they live in the Ungrouped holding group — which is also the quickest way
+                            to see what is still unaccounted for.</p>
+
+                        <h4>In the editor</h4>
+                        <p>The same colour, on the definition and on every place the name is called:
+                            the symbol takes its group's colour straight away, and the group itself
+                            rides along in an ordinary comment at the end of the definition line —
+                            which is what keeps the membership through a rename, a move between files
+                            and a colleague opening the same project.</p>
+                        <pre class="browse-code"><span class="comment">' Engine group (blue), Player group (orange), Enemy group (red)</span>
+Sub <span style="color:#49a0df">WorldSetup()</span>                 <span class="comment">'@a.Engine.me</span>
+    <span style="color:#ec9e51">PlayerSpawn()</span>                    <span class="comment">' Called: drawn in Player's orange</span>
+    <span style="color:#e05269">EnemyClear()</span>                     <span class="comment">' Called: drawn in Enemy's red</span>
+End Sub</pre>
+                        <p class="browse-note">The definition is blue because it is in Engine; the two
+                            calls are orange and red because those names belong to other groups. One
+                            function, three colours — each one answering "whose is this name".</p>
                     </div>
 
                     <div class="browse-panel" data-key="inherit" hidden>
                         <h3>Inherited groups</h3>
-                        <p>A group is inherited by everything inside it, so tagging a whole block is
-                            one action rather than hundreds. But any individual symbol can step out and
-                            join a different group — one function inside a library block can move into
-                            your own group without being lifted out of the block it lives in.</p>
+                        <p>A group put on a <strong>Type</strong> or an <strong>Enum</strong> is
+                            inherited by everything declared with it: tag the type once, and its
+                            instances are drawn in that colour. The Types view marks those rows
+                            <span class="mono">(I) Group</span> — the colour is inherited, not owned,
+                            and the variable itself carries no tag.</p>
+                        <p>An instance with a tag of its own keeps it. The type's group does not
+                            apply to that one as well: two groups on a single line would be two
+                            answers, and the colour already shows the one you chose. A
+                            <code>common</code> or <code>extern</code> variable declared in another
+                            module follows that declaration's group instead — one variable is the
+                            more specific statement.</p>
+                        <pre class="browse-code"><span class="comment">' One type, one group</span>
+<span style="color:#49a0df">Type Vec2</span>                        <span class="comment">'@a.Engine.me</span>
+    <span style="color:#49a0df">x</span> As Single
+    <span style="color:#49a0df">y</span> As Single
+End Type
+
+Dim Shared <span style="color:#49a0df">gTargetPos</span> As <span style="color:#49a0df">Vec2</span>
+<span style="color:#49a0df">gTargetPos</span>.<span style="color:#49a0df">x</span> = 5                <span class="comment">' Every gTargetPos reference is drawn in the colour of Vec2's group.</span></pre>
+                        <pre class="browse-code"><span class="comment">' One enum, one group</span>
+<span style="color:#49a0df">Enum ShapeKind</span>                   <span class="comment">'@a.Engine.me</span>
+    <span style="color:#49a0df">SK_Circle</span> = 1
+    <span style="color:#49a0df">SK_Rectangle</span> = 2
+    <span style="color:#49a0df">SK_Polygon</span> = 3
+End Enum
+
+Dim Shared <span style="color:#49a0df">gShape</span> As <span style="color:#49a0df">ShapeKind</span>
+<span style="color:#49a0df">gShape</span> = <span style="color:#49a0df">ShapeKind.SK_Circle</span>   <span class="comment">' Every gShape reference is drawn in the colour of ShapeKind's group.</span></pre>
                         <p class="browse-note">A group can be switched off without being deleted. It
                             stops colouring and leaves the panel, but it is still there.</p>
                     </div>
 
                     <div class="browse-panel" data-key="instances" hidden>
                         <h3>Instance colours</h3>
-                        <p>An instance of a type does not have to follow the type's colour. Put the
-                            instance in its own group and it takes that colour instead — useful when
-                            one variable of a type matters to you and the rest do not.</p>
+                        <p>An instance of a type or an enum does not have to follow the colour of the
+                            group its type is in. Put the instance in its own group and it takes that
+                            colour instead — useful when one variable of a type matters to you and the
+                            rest do not.</p>
+                        <pre class="browse-code"><span class="comment">' One type, three groups</span>
+<span style="color:#49a0df">Type Vec2</span>                        <span class="comment">'@a.Engine.me</span>
+    <span style="color:#49a0df">x</span> As Single
+    <span style="color:#49a0df">y</span> As Single
+End Type
+
+Dim Shared <span style="color:#e05269">gTargetPos</span> As <span style="color:#49a0df">Vec2</span>    <span class="comment">'@a.Enemy.me</span>
+Dim Shared <span style="color:#ec9e51">gPlayerPos</span> As <span style="color:#49a0df">Vec2</span>    <span class="comment">'@a.Player.me</span>
+<span style="color:#e05269">gTargetPos.x</span> = 5
+<span style="color:#ec9e51">gPlayerPos.x</span> = 5</pre>
+                        <pre class="browse-code"><span class="comment">' One enum, three groups</span>
+<span style="color:#49a0df">Enum ShapeKind</span>                   <span class="comment">'@a.Engine.me</span>
+    <span style="color:#49a0df">SK_Circle</span> = 1
+    <span style="color:#49a0df">SK_Rectangle</span> = 2
+    <span style="color:#49a0df">SK_Polygon</span> = 3
+End Enum
+
+Dim Shared <span style="color:#e05269">gShape</span> As <span style="color:#49a0df">ShapeKind</span>     <span class="comment">'@a.Enemy.me</span>
+Dim Shared <span style="color:#ec9e51">gKind</span> As <span style="color:#49a0df">ShapeKind</span>      <span class="comment">'@a.Player.me</span>
+<span style="color:#e05269">gShape</span> = <span style="color:#49a0df">ShapeKind.SK_Circle</span>
+<span style="color:#ec9e51">gKind</span> = <span style="color:#49a0df">ShapeKind.SK_Rectangle</span></pre>
+                        <p class="browse-note">The colour also respects the symbol's real scope. A
+                            <span class="mono">Dim Shared</span> belongs to its own module, so its
+                            colour appears only there — another module naming the same word gets no
+                            colour, because that symbol is not visible to it. A
+                            <span class="mono">Common Shared</span> is the opposite: it is one
+                            variable every module shares, so its colour shows up in every module
+                            that uses it. Seeing the colour in a file tells you the symbol is really
+                            in scope in that file.</p>
+                        <p>The same rule works inside a module. A variable declared outside a
+                            function keeps its colour inside every function that uses it — the scope
+                            reaches in, so the colour does too. A variable born inside a function is
+                            coloured only while that scope lasts: the colour stops at the end of the
+                            function and does not leak out. Loops and other nested blocks follow the
+                            same rule — the colour marks exactly the region the variable lives in.</p>
+                        <pre class="browse-code"><span class="comment">' The colour marks exactly where the variable is in scope</span>
+Dim Shared <span style="color:#ec9e51">gPlayerPos</span> As <span style="color:#49a0df">Vec2</span>      <span class="comment">'@a.Player.me — orange for the whole module</span>
+
+Sub MovePlayer()
+    Dim <span style="color:#49a0df">tmp</span> As <span style="color:#49a0df">Vec2</span>                   <span class="comment">' local: takes Vec2's blue, this Sub only</span>
+    <span style="color:#ec9e51">gPlayerPos.x</span> += <span style="color:#49a0df">tmp.x</span>             <span class="comment">' scope reaches in → still orange here</span>
+End Sub                                <span class="comment">' tmp's colour ends here — it does not leak out</span></pre>
                         <p class="browse-note">Nothing disappears if you have not classified it. An
-                            instance with no group takes its type's colour; a type with no group stays
-                            a neutral grey.</p>
+                            instance with no group takes the colour of the group its type is in; if the
+                            type is in no group either, the type and its ungrouped instances are drawn
+                            in the editor's normal text colour.</p>
                     </div>
 
                     <div class="browse-panel" data-key="views" hidden>
@@ -427,9 +651,128 @@ fbc -include generated.bi <span class="string">01_kirjasto.bas</span> <span clas
                         <p>Mark the functions you keep coming back to. They are starred beside the code
                             in the editor, so the two or three you actually work with are findable at a
                             glance in a file you have not opened in months.</p>
+                        <p>Favourites get a section of their own in the Functions tab, grouped into
+                            collapsible per-kind sections — Functions, Subs, Macros, Types, Enums,
+                            Instances — each with its own expander. Every favourite is tagged with its
+                            kind, so a starred type never hides among starred functions.</p>
+                        <p>You can sort by name, by group or by kind, and filter to show only
+                            Functions/Subs or everything. Each kind section takes a right-click for
+                            batch work: remove everything in the section, or set everything in it to
+                            one group in a single move.</p>
                         <p class="browse-note">The star can sit in the editor gutter, in the overview
-                            ruler beside the scrollbar, in both, or nowhere.</p>
+                            ruler beside the scrollbar, in both, or nowhere — your choice in Settings.</p>
                     </div>
+
+                    <div class="browse-panel" data-key="catfilter" hidden>
+                        <h3>Category filters</h3>
+                        <p>The top row of the Functions tab carries five small icon toggles:
+                            <strong>Functions</strong>, <strong>Subs</strong>, <strong>Macros</strong>,
+                            <strong>Public</strong> and <strong>Private</strong>. They answer a
+                            different question from the colour groups: not "which part of the project"
+                            but "what kind of thing is this".</p>
+                        <p>The two axes are independent and combine as an AND. Every symbol has a kind
+                            <em>and</em> a visibility, so a row shows when its kind is on <em>and</em>
+                            its visibility is on. That opens combinations a single choice could never
+                            express: all public functions and subs at once; every private symbol of
+                            every kind; all three kinds with only the publics.</p>
+                        <h4>Two rules worth knowing</h4>
+                        <ul class="feature-list">
+                            <li><strong>At least one of Public/Private stays on.</strong> Clicking the
+                                last one off does nothing — a filter with both visibilities off would
+                                hide everything for no reason. When both are on, either one may be
+                                switched off.</li>
+                            <li><strong>Macros ignore the visibility axis.</strong> A macro has no
+                                Public or Private concept, so it is shown only while the visibility
+                                axis is fully open. "Private only" would be claiming the macro is
+                                private, and that would be a lie.</li>
+                            <li><strong>Declares belong to the unfiltered view.</strong> A
+                                <code>Declare</code> line carries no metadata of its own — the
+                                extension finds its alias from the definition in another file — so it
+                                appears when all three kinds are on, and steps out of narrower
+                                categories.</li>
+                        </ul>
+                        <p>The search box combines with the toggles as another AND: the text searches
+                            <em>inside</em> the categories you left on. The active toggles are drawn in
+                            the badge colour, the inactive ones in grey, and the choice is kept between
+                            sessions.</p>
+                    </div>
+
+                    <div class="browse-panel" data-key="typesview" hidden>
+                        <h3>The Types view</h3>
+                        <p>Types and enums each get their own expander with a count — and each type or
+                            enum opens into its <strong>instances</strong>: every
+                            <code>Dim x As T</code> that was declared with it, indented underneath.
+                            Instances start collapsed, so a type with thirty variables costs one row.</p>
+                        <ul class="feature-list">
+                            <li><strong>Same name in several files collapses.</strong> One
+                                <span class="mono">name (N)</span> row stands for them all; opening it
+                                lists the individual files.</li>
+                            <li><strong>(I) means inherited.</strong> An instance with no tag of its own
+                                is already drawn in its type's group colour — the (I) marker is what
+                                makes that colour legible and says the instance itself is not in the
+                                group. Hover the (I) to see which group is meant. An instance with its
+                                own group shows only that one.</li>
+                            <li><strong>A bright dot marks the active editor</strong>, a dim grey one
+                                any of the other visible editors — a background tab gets no dot. The
+                                dot in the left margin means "this definition lives in one of the
+                                editors you can see" — for types, enums and instances alike.
+                                It is a location fact, not a visibility one: an instance in the active
+                                file keeps its bright dot even when its type lives elsewhere.</li>
+                            <li><strong>Name rows are shaded</strong> like the group headers in the
+                                Functions tab, so a type always reads as the head of what follows it.</li>
+                        </ul>
+                        <p class="browse-note">The expander you touched last keeps its marker, so you
+                            can find your way back after scrolling — even if you closed it again. The
+                            gold row highlight means something else: "you are here", from a hover jump
+                            or a click.</p>
+                    </div>
+
+                    <div class="browse-panel" data-key="searchbox" hidden>
+                        <h3>Search</h3>
+                        <p>Both list tabs search by name as you type, and both combine the search with
+                            their filter as an AND — a type defined in another file stays hidden by
+                            <em>active file only</em> even when the search finds it.</p>
+                        <h4>Types search matches the whole row</h4>
+                        <p>Not just type names: searching an instance or a member name finds its parent
+                            and shows only the children that matched. When the type's own name matches,
+                            the row is shown whole — instances and members intact — because you are
+                            looking for that type, not for its members.</p>
+                        <h4>Small rules that matter</h4>
+                        <ul class="feature-list">
+                            <li>Case-insensitive.</li>
+                            <li><span class="mono">Esc</span> clears the box.</li>
+                            <li>Neither the search nor the filter is stored between sessions: the tab
+                                must never open narrowed without telling you why.</li>
+                            <li>A jump from a hover <strong>wins over the narrowing</strong>: if the
+                                target is hidden, both the search and the filter switch themselves off —
+                                visibly, in the top row — so the target is actually reachable. A target
+                                that is already visible leaves the narrowing alone.</li>
+                        </ul>
+                    </div>
+
+                    <div class="browse-panel" data-key="emptylists" hidden>
+                        <h3>Empty lists</h3>
+                        <p>A blank list with no explanation is worse than no list. When a list comes up
+                            empty it says why — and the message names the filter that caused it:</p>
+                        <ul class="feature-list">
+                            <li><span class="mono">No matches for "x"</span> — the search found
+                                nothing. With the category filters on, it is the search text that is
+                                named, because that is what narrowed last.</li>
+                            <li><span class="mono">No types from the active file</span> /
+                                <span class="mono">from the visible files</span> — the wording follows
+                                the actual scope mode. An old hardcoded "active file" would be a lie
+                                when the list is cut to open files.</li>
+                            <li><span class="mono">No functions in used groups</span> — everything
+                                visible belongs to groups that are switched off.</li>
+                            <li><span class="mono">No functions in this category</span> — the category
+                                filter is the reason, and the list says so rather than pretending the
+                                project is empty.</li>
+                        </ul>
+                        <p class="browse-note">The Types tab has two lists, so an empty message names
+                            its section too — "No enums match \"x\"" under a visible type hit would
+                            otherwise read as the whole tab having found nothing.</p>
+                    </div>
+
 
                     <div class="browse-panel" data-key="diagnostics" hidden>
                         <h3>Diagnostics</h3>
@@ -441,6 +784,81 @@ fbc -include generated.bi <span class="string">01_kirjasto.bas</span> <span clas
                         <p class="browse-note">What reaches you is meant to be yours to fix.</p>
                     </div>
 
+                    <div class="browse-panel" data-key="codelens" hidden>
+                        <h3>CodeLens</h3>
+                        <p>Above every function definition sits a line of links. It starts with
+                            <strong>Group: &lt;name&gt;</strong> — click it and the Functions tab
+                            opens, focused on that group and that function — followed by
+                            <strong>Callers:</strong> and each caller's name as its own clickable
+                            jump straight to the call site.</p>
+                        <p>When a function has more than ten callers, the rest collapse behind
+                            <span class="mono">+N more…</span>, which opens a searchable list you can
+                            filter by typing. A function with no callers says so instead of showing an
+                            empty line.</p>
+                        <p class="browse-note">The CodeLens can be switched off in Settings
+                            (<span class="mono">editor.codeLens</span>) if you would rather keep the
+                            space above your definitions.</p>
+                    </div>
+
+                    <div class="browse-panel" data-key="multiuser" hidden>
+                        <h3>Multi-user</h3>
+                        <p>Several people can work on the same code with their own groups, colours and
+                            favourites, without interfering with each other. Each user's settings live
+                            in their own file in the project folder — the first time you open a
+                            project, one is created for you silently, so there is nothing to
+                            configure.</p>
+                        <p>The group markers in the code carry a user identity, which is what makes
+                            this work: everyone sees and edits only their own groups and favourites,
+                            even on identical code. A group survives a rename, a move between files
+                            and a colleague opening the same project — the tag is what carries it, and
+                            the tag is yours.</p>
+                        <p class="browse-note">This costs nothing when working alone — it is the same
+                            mechanism, just with one identity in play.</p>
+                    </div>
+
+                    <div class="browse-panel" data-key="settingsview" hidden>
+                        <h3>Settings</h3>
+                        <p>Everything configurable lives in the panel's own Settings tab, and can be
+                            stored at User or Workspace scope:</p>
+                        <ul class="feature-list">
+                            <li><strong>Decoration colour</strong> — the colour and transparency of
+                                the marker highlights in the editor
+                                (<span class="mono">decorationColor</span>).</li>
+                            <li><strong>Hover on/off</strong> — whether the hover card is shown at all.</li>
+                            <li><strong>Block background and border alpha</strong> — how strong the
+                                highlight blocks behind decorated ranges are drawn.</li>
+                            <li><strong>CodeLens</strong> — the caller line above function
+                                definitions (<span class="mono">editor.codeLens</span>, on by
+                                default).</li>
+                            <li><strong>Your user file</strong> — the settings file the groups and
+                                favourites are written to, also where the define location of a group
+                                points when you click it.</li>
+                        </ul>
+                        <p class="browse-note">The extension needs no setup files and no user name of
+                            its own: open a FreeBASIC project and the panel is there.</p>
+                    </div>
+
+                    <div class="browse-panel" data-key="buildstatus" hidden>
+                        <h3>Build status</h3>
+                        <p>The generated declaration file goes stale the moment you change a
+                            signature. The panel knows this and keeps the state visible instead of
+                            letting you build against a file that no longer matches your code:</p>
+                        <ul class="feature-list">
+                            <li><strong>An edit marks the build stale.</strong> The compile button
+                                carries the marker in its own name — not a separate box somewhere —
+                                so the button you are about to press is the one telling you.</li>
+                            <li><strong>A failed regeneration is reported.</strong> If writing the
+                                generated file fails, you are told; there is no silent compile against
+                                an old file.</li>
+                            <li><strong>A failed compile does not run the old executable.</strong>
+                                When the compiler reports errors, the previous .exe is left alone —
+                                running it would be yesterday's program with today's name.</li>
+                            <li><strong>Line numbers stay true.</strong> The compile-time copies keep
+                                every line on its own line number, so an error the compiler reports on
+                                line 6 is on line 6 of your own file.</li>
+                        </ul>
+                    </div>
+
                     <div class="browse-panel" data-key="declare" hidden>
                         <h3>Declarations &amp; build</h3>
                         <p>Every module-level function and sub gets a declaration written into a single
@@ -449,6 +867,129 @@ fbc -include generated.bi <span class="string">01_kirjasto.bas</span> <span clas
                             files stops breaking anything.</p>
                         <p class="browse-note">The same one-line invocation builds the project. Your own
                             code stays untouched; the generated file lives beside it.</p>
+                    </div>
+
+                    <div class="browse-panel" data-key="filestab" hidden>
+                        <h3>The Files tab</h3>
+                        <p>Which modules take part in the build, and in what order, is yours to decide
+                            there. Every module in the project has a checkbox: the ticked ones go to the
+                            compiler and the unticked ones are left out, so a half-finished file does not
+                            have to stop the build.</p>
+                        <p>Drag a row to move it. The order is the execution order: the lowest checked
+                            file runs first, and the topmost checked file runs last. The topmost file is
+                            the main file — the one the executable is named after.</p>
+                    </div><!-- /.browse-panel -->
+
+                    <div class="browse-panel" data-key="automation" hidden>
+                        <h3>Automation</h3>
+                        <p>Everything the compiler needs to know about your project goes into one
+                            file, <code>generated.bi</code>, which is handed to the compiler ahead of
+                            your modules. You never write it and you never include it by hand.</p>
+                        <p>The file is written in this order:</p>
+                        <ol class="browse-steps">
+                            <li>Comment lines</li>
+                            <li><code>#include</code> lines</li>
+                            <li><code>#define</code> lines</li>
+                            <li><code>Const</code> lines</li>
+                            <li><code>Enum</code> blocks</li>
+                            <li><code>Type</code> blocks</li>
+                            <li><code>Union</code> blocks</li>
+                            <li><code>Declare</code> lines</li>
+                        </ol>
+                        <p>The <strong>comment lines</strong> at the top say what the file is and how
+                            it is meant to be compiled. They are comments, so the compiler ignores
+                            them — they are there for whoever opens the file.</p>
+                        <p>The <strong>include lines</strong> are copied from your modules, once each.
+                            <code>once</code> is added where it is missing, and a library include keeps
+                            the tag that gives it its own colour in the panel.</p>
+                        <p>The <strong>defines, consts, enums, types and unions</strong> are lifted
+                            out of the modules that declare them, tags and all, and sorted by what
+                            depends on what — a type that uses a const comes after it. The order above
+                            is where each kind starts, not a rule the result has to keep.</p>
+                        <p><strong>Declares</strong> are written for every module-level function and
+                            sub, including the member procedures of a type. A <code>Declare</code> line
+                            you wrote yourself in a module is never copied here: it stays where it is,
+                            and the file gets no second one.</p>
+                        <p>What is <em>not</em> in it: no variable declarations, no
+                            <code>Sub</code> or <code>Function</code> bodies, and nothing you wrote as
+                            an initialisation. Those stay in your own files, where you wrote them.</p>
+                        <div class="code-preview-box">
+                            <div class="window-header">
+                                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                                <span class="window-title">generated.bi (written for you)</span>
+                            </div>
+                            <pre><code><span class="comment">' .bi generator output</span>
+<span class="comment">' Includes, consts, defines, enums, types/unions and Declare lines:</span>
+<span class="comment">' no variables, no bodies.</span>
+
+<span class="keyword">#include once</span> <span class="string">"SDL3/SDL.bi"</span> <span class="comment">'@e.SDL3</span>
+
+<span class="keyword">type</span> Vec2 <span class="comment">'@a.Engine.me</span>
+    x <span class="keyword">As Single</span>
+    y <span class="keyword">As Single</span>
+<span class="keyword">end type</span>
+
+<span class="keyword">Declare Sub</span> WorldSetup()
+<span class="keyword">Declare Function</span> FieldArea() <span class="type">As Single</span></code></pre>
+                        </div>
+
+                        <h4>The compile-time copies</h4>
+                        <p>A <code>#define</code>, <code>Type</code>, <code>Enum</code> or
+                            <code>Union</code> cannot appear twice — the compiler stops with
+                            <code>error 4</code>. Since <code>generated.bi</code> is included into every
+                            module, a lifted block has to be absent from the module it came from.</p>
+                        <p>So for the duration of the compile each file that contributed a lifted block
+                            gets a copy beside it, in the same folder, named
+                            <code>&lt;module&gt;.bi_temp.bas</code>.</p>
+                        <p>What is taken out of that copy is what the compiler will not accept
+                            twice: every <code>#define</code>, <code>Enum</code>, <code>Type</code> and
+                            <code>Union</code> block that came out of that module. Each of their lines
+                            is replaced by a blank line, so the file keeps its length and every line
+                            below stays on its own line number.</p>
+                        <p><code>Const</code> lines are left where they are: a duplicate
+                            <code>Const</code> is legal, and the module's own line is what its own code
+                            uses. <code>Declare</code> lines are not involved either — the generated
+                            file only gets a <code>Declare</code> where the module does not already
+                            have one. A file that contributed nothing is not copied at all.</p>
+                        <div class="code-comparison">
+                            <div class="code-box">
+                                <h4>01_types.bas — your file</h4>
+                                <pre><code><span class="keyword">Type</span> Vec2
+    x <span class="keyword">As Single</span>
+    y <span class="keyword">As Single</span>
+<span class="keyword">End Type</span>
+
+<span class="keyword">Public Sub</span> WorldSetup()
+    gPlayField.w = 800.0
+<span class="keyword">End Sub</span></code></pre>
+                            </div>
+                            <div class="code-box">
+                                <h4>01_types.bi_temp.bas — what the compiler gets</h4>
+                                <pre><code>
+
+
+
+
+<span class="keyword">Public Sub</span> WorldSetup()
+    gPlayField.w = 800.0
+<span class="keyword">End Sub</span></code></pre>
+                            </div>
+                        </div>
+                        <p>The copy is the same file, four lines emptier and not one line shorter.
+                            That is the whole point: an error the compiler reports on line 6 of the
+                            copy is reported to you on line 6 of your own file.</p>
+                        <p class="browse-note">The copies are always deleted when the compile
+                            finishes. The <code>.bi_temp.bas</code> name is what keeps them out of the
+                            module list and out of the analysis while they exist, and what stops
+                            anything mistaking them for your sources.</p>
+
+                        <h4>The command</h4>
+                        <p>Your checked files go to the compiler in the order you arranged them in
+                            the panel, with the generated file first and the output flag last:</p>
+                        <pre class="browse-code">fbc -include generated.bi main.bas 01_types.bas -x main.exe</pre>
+                        <p class="browse-note">The executable is named after the first checked file,
+                            not after a copy — so it is called what you think your program is
+                            called.</p>
                     </div><!-- /.browse-panel -->
 
         </div><!-- /#browseDetail -->
@@ -457,15 +998,19 @@ fbc -include generated.bi <span class="string">01_kirjasto.bas</span> <span clas
     <footer>
         <div class="container footer-content">
             <p>&copy; FreeBASIC Panel &middot; Built for FreeBASIC projects in VS Code.</p>
+            <p class="footer-links">
+                <a href="https://github.com/JuhaW/Vscode_Extension_Freebasic_LSP">GitHub</a>
+                <span class="sep">&middot;</span>
+                <a href="https://github.com/JuhaW/Vscode_Extension_Freebasic_LSP/issues">Issues</a>
+            </p>
         </div>
     </footer>
 
 <script>
-        // Ominaisuuslista: klikkaus vaihtaa detailin. Pelkkä JavaScript,
-        // ei riippuvuuksia. Kaikki panelit ovat olemassa DOMissa ja
-        // piilotulla -attribuutilla, joten sisältö on luettavissa myos
-        // ilman JavaScriptiä (kaikki näkyvät perakkain, eika mitään
-        // kataudu).
+        // Feature list: a click swaps the detail pane. Plain JavaScript,
+        // no dependencies. All panels exist in the DOM and are hidden with
+        // the hidden attribute, so the content is readable without
+        // JavaScript too (everything shows in sequence, nothing is lost).
         (function () {
             var list = document.getElementById('browseList');
             var detail = document.getElementById('browseDetail');
@@ -474,12 +1019,18 @@ fbc -include generated.bi <span class="string">01_kirjasto.bas</span> <span clas
             if (!list || !detail || !viewMain || !viewFeature) return;
             var buttons = Array.prototype.slice.call(list.querySelectorAll('.browse-item'));
             var panels = Array.prototype.slice.call(detail.querySelectorAll('.browse-panel'));
+            var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-link'));
 
             function show(key) {
                 buttons.forEach(function (b) {
+                    var active = b.dataset.key === key;
+                    b.classList.toggle('is-active', active);
+                    b.setAttribute('aria-selected', active ? 'true' : 'false');
+                });
+                navLinks.forEach(function (b) {
                     b.classList.toggle('is-active', b.dataset.key === key);
                 });
-                // "main" = paasivu naykyy, ominaisuusnaytys piilossa.
+                // "main" = main page visible, feature view hidden.
                 var isMain = key === 'main';
                 viewMain.hidden = !isMain;
                 viewFeature.hidden = isMain;
@@ -491,16 +1042,14 @@ fbc -include generated.bi <span class="string">01_kirjasto.bas</span> <span clas
                 }
             }
 
-            // Samat napit ohjaavat listaa JA ylin headerin linkit: molemmat
-            // kutsuvat show(), joten kohde ei koskaan riippu siita kumpaa
-            // niistä käyttäjä painaa.
-            buttons.concat(Array.prototype.slice.call(
-                document.querySelectorAll('.nav-link'))).forEach(function (b) {
+            // Both the sidebar buttons and the header links call show(),
+            // so the destination never depends on which one the user hits.
+            buttons.concat(navLinks).forEach(function (b) {
                 b.addEventListener('click', function () { show(b.dataset.key); });
             });
 
-            // Osoiterivi #avain valitsee saman ominaisuuden.
-            // Jos sitä ei ole, näytetään pääsivu.
+            // Address bar #key selects the matching feature.
+            // If it does not exist, the main page is shown.
             function fromHash() {
                 var m = /^#browse-([a-z]+)$/.exec(location.hash);
                 show(m ? m[1] : 'main');

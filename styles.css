@@ -98,7 +98,8 @@ body {
     transition: color 0.2s;
 }
 
-.nav-links a:hover {
+.nav-links .nav-link:hover,
+.nav-links .nav-link.is-active {
     color: var(--accent);
 }
 
@@ -400,6 +401,25 @@ footer {
     max-width: none;
 }
 
+.footer-links {
+    margin-top: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+.footer-links .sep {
+    margin: 0 0.5rem;
+    opacity: 0.5;
+}
+
 /* ---------- naykymien vaihto ----------
    #viewMain ja #viewFeature ovat toisensaan poisslukevia. `hidden`
    olisi oletuksena riittava, mutta .browse asettaa display: grid,
@@ -638,6 +658,133 @@ footer {
 	background: var(--code-bg);
 	padding: 1px 5px;
 	border-radius: 3px;
+}
+
+/* Functions in a group -paneelin palloesimerkki: pienoismalli siitä
+   miltä ryhmän alla olevat rivit näyttävät. Sääntö on sama kuin
+   oikeassa paneelissa: pallon väri kertoo LÄHEISYYDEN, nimen väri
+   ryhmän (functions.css .alf-func-dot). Kirkas #cccccc = määrittely
+   aktiivisessa editorissa, himmeä #6c6c6c = muussa näkyvässä
+   tiedostossa (VS Coden disabledForeground tummassa teemassa).
+   ⭐ Pallo on TÄSMÄLLEEN sama mittakaava kuin totuudessa: 5 px,
+   4 px vasemmalla rivin keskeltä — esimerkki ei saa näyttää
+   erikokoiselta kuin se minkä käyttäjä ruudulla näkee. */
+.browse-funcmock {
+	margin: 0 0 1rem;
+	padding: 0.6rem 0.9rem;
+	background: #1e1e1e;
+	border: 1px solid var(--border);
+	border-radius: 0.5rem;
+	max-width: 26rem;
+	font-family: 'Fira Code', monospace;
+	font-size: 0.85rem;
+	line-height: 1.9;
+}
+
+.browse-funcmock .fm-group {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding-bottom: 0.3rem;
+	margin-bottom: 0.25rem;
+	border-bottom: 1px solid #3c3c3c;
+	color: #dcdcdc;
+	font-weight: 600;
+}
+
+.browse-funcmock .fm-colour {
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	flex: none;
+}
+
+.browse-funcmock .fm-counts {
+	color: #93a3bb;
+	font-weight: 400;
+}
+
+.browse-funcmock .fm-row {
+	position: relative;
+	padding-left: 14px;
+}
+
+.browse-funcmock .fm-ball {
+	position: absolute;
+	left: 4px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+}
+
+.browse-funcmock .fm-ball.is-active { background: #cccccc; }
+.browse-funcmock .fm-ball.is-visible { background: #6c6c6c; }
+
+/* Palloesimerkin kaksi editorinäkymää: vasen (engine.bas) on
+   AKTIIVINEN — sen välilehti on korostettu ja reunus kirkkaampi —
+   ja oikea (enemies.bas) on vain näkyvä. Molemmat määrittelevät
+   funktioita samasta Engine-ryhmästä, joten nimet ovat sinisiä
+   kummassakin. Nämä ovat pienoismalleja, eivät kuvia: tarkoitus on
+   että lukija näkee saman korin kahdessa editorissa ja pallot
+   paneelissa vastaavat sitä. */
+.fm-editors {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.6rem;
+	margin: 0 0 0.6rem;
+}
+
+.fm-ed {
+	border: 1px solid var(--border);
+	border-radius: 0.5rem;
+	overflow: hidden;
+	min-width: 0;
+}
+
+/* Aktiivinen editori: kirkkaampi reunus + korostettu välilehti.
+   Näin "kumpi on aktiivinen" näkyy ilman tekstejä. */
+.fm-ed.is-active {
+	border-color: #4a9eff;
+}
+
+.fm-ed-tab {
+	font-family: 'Fira Code', monospace;
+	font-size: 0.72rem;
+	padding: 0.25rem 0.6rem;
+	background: #2a2d2e;
+	color: #93a3bb;
+	border-bottom: 1px solid var(--border);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.fm-ed.is-active .fm-ed-tab {
+	background: #1e1e1e;
+	color: #ffffff;
+}
+
+.fm-ed-role {
+	color: #6d7681;
+	font-weight: 400;
+}
+
+.fm-ed-code {
+	padding: 0.5rem 0.6rem;
+	background: #1e1e1e;
+	font-family: 'Fira Code', monospace;
+	font-size: 0.75rem;
+	line-height: 1.7;
+	color: #93a3bb;
+	white-space: pre;
+	overflow-x: auto;
+}
+
+/* Pienempi näyttö = nimet tulevat päällekkäin. */
+@media (max-width: 560px) {
+	.fm-editors { grid-template-columns: 1fr; }
 }
 
 /* Selitys ja kuva rinnakkain: teksti vasemmalla, kuva oikealla.
